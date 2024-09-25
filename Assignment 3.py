@@ -10,5 +10,5 @@ code to someone else), the case shall be submitted to the Office of the Dean of
 Students. Academic penalties up to and including an F in the course are likely.
 
 UT EID 1: SLK2633
-UT EID 2: 
+UT EID 2: EGB664
 """
