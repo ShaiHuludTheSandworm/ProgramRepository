@@ -1,3 +1,20 @@
 to do
+edit wordle.py to work according to the wordle game rules
+correct letter = green, correct letter wrong placement = yellow, incorrect letter = grey
+guessing correct word = win
+failing to do so in 6 turns = lose and reveal of correct word
+game may be played as many times as the player wishes
+program should be able to give options to manually choose a secret word or
+utilize a seed or
+read guesses from a text file
+on user input error print out string in the constant "INVAID_INPUT"
+reading guesses from a text file specifically the "valid_guesses.txt" file
+randomly choose a secret word from the file "secret_words.txt"
+only accept / display lowercase input except when accepting a number for the seeded random word
+on user input error you should raise a "ValueError" to be handled in main to print out "INVALID_INPUT"
+optionally add more functions than currently exist
 
 not to do
+do not change names of functions listed
+functionality of functions must match given specifications
+do not import external libraries with the exception of "random" and "sys"
