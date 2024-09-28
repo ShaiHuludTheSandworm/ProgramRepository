@@ -121,6 +121,7 @@ def prepare_game():
     with open("valid_guesses.txt", "r", encoding="ascii") as valid_nonsecret_words:
         valid_words = [word.rstrip() for word in valid_nonsecret_words.readlines()]
     
+    # this file might not have to be encoded with ascii
     with open("secret_words.txt", "r", encoding="ascii") as valid_secret_words:
         possible_secret_words = [word.rstrip() for word in valid_secret_words.readlines()]
 
