@@ -120,15 +120,34 @@ def prepare_game():
     # Specify "ascii" as its representation (encoding) since its required by pylint.
     with open("valid_guesses.txt", "r", encoding="ascii") as valid_nonsecret_words:
         valid_words = [word.rstrip() for word in valid_nonsecret_words.readlines()]
+    
+    with open("secret_words.txt", "r", encoding="ascii") as valid_secret_words:
+        possible_secret_words = [word.rstrip() for word in valid_secret_words.readlines()]
 
-    # Modify this if statement! This is just starter code.
+    # Checks if proper amt of arguments is provided
+    # Acceptable length for sys.argv might need to be 3 based on acceptable inputs in the google doc
+    # Ex. python3 wordle.py 123 < 123.in or cat guesses.txt | python3 wordle.py (not sure if this would equate to len(sys.argv) == 3), if so...
+    # (if len(sys.argv) > 3 & if len(sys.argv) == 2 or 3) would be how to solve that
+    if len(sys.argv) > 2:
+        raise ValueError
+
+    #initializes arg variable
     if len(sys.argv) == 2:
-        secret_word = sys.argv[1]
+        arg = sys.argv[1]
+    
+    # Checks if arg is digit, or if arg is avalid 5 char, lowercase word in list of secret words
+    if arg.isdigit():
+        random.seed(int(arg))
+        secret_word = random.choice(possible_secret_words)
+    elif len(arg) == 5 and arg.islower() and arg in possible_secret_words:
+        secret_word = arg
     else:
-        secret_word = "hello"
+        raise ValueError
+    
+    # might have to return None on Invalid input instead of raising a value error
 
-    # You do not have to change this return statement
-    return secret_word, valid_words
+    # Returns a tuple (secret_word, valid_words)
+    return (secret_word, valid_words)
 
 
 # TODO: Modify this function. You may delete this comment when you are done.
