@@ -140,7 +140,7 @@ def prepare_game():
     if arg.isdigit():
         random.seed(int(arg))
         secret_word = random.choice(possible_secret_words)
-    elif len(arg) == 5 and arg.islower() and arg in possible_secret_words:
+    elif arg in possible_secret_words:
         secret_word = arg
     else:
         raise ValueError
@@ -161,8 +161,9 @@ def is_valid_guess(guess, valid_guesses):
           being a valid 5 letter lowercase guess.
     post: returns a boolean value
     """
+    if guess not in valid_guesses:
+        return False
 
-    # Modify this return statement!
     return True
 
 
