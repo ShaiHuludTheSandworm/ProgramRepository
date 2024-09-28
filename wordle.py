@@ -144,6 +144,7 @@ def prepare_game():
         secret_word = arg
     else:
         raise ValueError
+        return None
     
     # might have to return None on Invalid input instead of raising a value error
 
