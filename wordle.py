@@ -126,7 +126,8 @@ def prepare_game():
     if arg.isdigit():
         random.seed(int(arg))
         secret_word = random.choice(possible_secret_words)
-    elif arg in possible_secret_words:
+        """elif arg in possible_secret_words:"""
+    elif len(list(arg)) == 5: 
         secret_word = arg
     else:
         raise ValueError
