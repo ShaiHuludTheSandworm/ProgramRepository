@@ -196,13 +196,12 @@ def get_feedback(secret_word, guessed_word):
             feedback[i] = CORRECT_COLOR
         else:
             incorrect_letters.append(secret_letters[i])
-    if len(incorrect_letters) > 0:
-        for i in range(NUM_LETTERS):
-            if guessed_letters[i] in incorrect_letters:
-                feedback[i] = WRONG_SPOT_COLOR
-                incorrect_letters.remove(guessed_letters[i])
-            else:
-                feedback[i] = NOT_IN_WORD_COLOR
+            feedback[i] = NOT_IN_WORD_COLOR
+
+    for i in range(NUM_LETTERS):
+        if guessed_letters[i] in incorrect_letters and feedback[i] is not CORRECT_COLOR:
+            feedback[i] = WRONG_SPOT_COLOR
+            incorrect_letters.remove(guessed_letters[i])
 
     # You do not have to change this return statement
     return color_word(feedback, guessed_word)
