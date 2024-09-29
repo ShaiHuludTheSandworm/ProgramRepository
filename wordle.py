@@ -145,9 +145,9 @@ def is_valid_guess(guess, valid_guesses):
           being a valid 5 letter lowercase guess.
     post: returns a boolean value
     """
-    if len(list(guess)) == 5 and guess.islower() and guess.isalpha():
-        return True
-    return False
+    if guess not in valid_guesses:
+        return False
+    return True
 
 def get_feedback(secret_word, guessed_word):
     """
@@ -197,6 +197,7 @@ def main():
         return
     print_explanation()
     secret_word, valid_guesses = valid
+    valid_guesses.append(secret_word)
     formatted_secret_word = "".join(
         [CORRECT_COLOR + c + RESET_COLOR for c in secret_word]
     )
