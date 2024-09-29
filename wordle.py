@@ -127,7 +127,7 @@ def prepare_game():
         random.seed(int(arg))
         secret_word = random.choice(possible_secret_words)
         """elif arg in possible_secret_words:"""
-    elif len(list(arg)) == 5: 
+    elif len(list(arg)) == 5 and arg.islower() and arg.isalpha():
         secret_word = arg
     else:
         raise ValueError
@@ -145,9 +145,9 @@ def is_valid_guess(guess, valid_guesses):
           being a valid 5 letter lowercase guess.
     post: returns a boolean value
     """
-    if guess not in valid_guesses:
-        return False
-    return True
+    if len(list(guess)) == 5 and guess.islower() and guess.isalpha():
+        return True
+    return False
 
 def get_feedback(secret_word, guessed_word):
     """
@@ -170,6 +170,9 @@ def get_feedback(secret_word, guessed_word):
     secret_letters = list(secret_word)
     guessed_letters = list(guessed_word)
     incorrect_letters = []
+    """if secret_word == guessed_word:
+        for i in range(5):
+            feedback[i] = CORRECT_COLOR"""
     for i in range(NUM_LETTERS):
         if secret_letters[i] == guessed_letters[i]:
             feedback[i] = CORRECT_COLOR
