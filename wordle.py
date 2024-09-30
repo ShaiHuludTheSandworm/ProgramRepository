@@ -99,11 +99,9 @@ def prepare_game():
 
     pre: The file valid_guesses.txt exists and contains valid guessable words, one per line.
     The file secret_words.txt exists and contains secret words, one per line.
-    
-    post: Returns a tuple (secret_word, valid_words) or raises a ValueError on invalid user
-    secret_word: A string that is either a randomly chosen word from secret_words.txt
-    or a valid 5-letter word.
-    valid_words: A list of valid guess words from valid_guesses.txt.
+
+    post: Returns a tuple which includes the secret word randomly gen or chosen, and a list of
+    valid words from a txt file plus the input or throws a valueerror exception
     """
     # Specify "ascii" as its representation (encoding) since its required by pylint.
     with open("valid_guesses.txt", "r", encoding="ascii") as valid_nonsecret_words:
@@ -127,7 +125,6 @@ def prepare_game():
     if arg.isdigit():
         random.seed(int(arg))
         secret_word = random.choice(possible_secret_words)
-        """elif arg in possible_secret_words:"""
     elif len(list(arg)) == 5 and arg.islower() and arg.isalpha():
         secret_word = arg
     else:
