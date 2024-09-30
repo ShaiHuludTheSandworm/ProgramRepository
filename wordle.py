@@ -1,6 +1,6 @@
 """
 On my/our honor, Shasa Lloyd Kolar and Ethan Gomez, this 
-programming assignment is my own work and I have not provided this code to 
+programming assignment is my own work and I have not provided this code to
 any other student.
 
 I have read and understand the course syllabus's guidelines regarding Academic
@@ -35,14 +35,16 @@ RESET_COLOR = "\033[0m"
 # CORRECT_COLOR = "\033[1;91m"
 # WRONG_SPOT_COLOR = "\033[1;94m"
 
-# Labels to each attempt number. Offset by 1 using "" so that the attempt number
-# correctly indexes into the list so that the operation doesn't need a -1 every time
+# Labels to each attempt number. Offset by 1 using "" so that the attempt
+# number correctly indexes into the list so that the operation doesn't need a
+# -1 every time
 ATTEMPT_NUMBER = ["", "6th", "5th", "4th", "3rd", "2nd", "1st"]
 
 # The total number of letters allowed
 NUM_LETTERS = 5
 
 INVALID_INPUT = "Bad input detected. Please try again."
+
 
 def print_explanation():
     """Prints the 'how to play' instructions on the official website"""
@@ -72,6 +74,7 @@ def print_explanation():
     print(NOT_IN_WORD_COLOR + "u" + RESET_COLOR, end=" ")
     print("is not in the word in any spot.\n")
 
+
 def color_word(colors, word):
     """
     Colors a given word using ANSI formatting then returns it as a new string.
@@ -81,12 +84,14 @@ def color_word(colors, word):
     post: Returns a string where each character in word is wrapped in the
           corresponding color from colors, followed by RESET_COLOR.
     """
+    
     assert len(colors) == 5, "List of colors must have a length of 5"
     assert len(word) == 5, "Word must have a length of 5"
     colored_word = [None] * NUM_LETTERS
     for i, character in enumerate(word):
         colored_word[i] = f"{colors[i]}{character}{RESET_COLOR}"
     return "".join(colored_word)
+
 
 def prepare_game():
     """
@@ -103,17 +108,23 @@ def prepare_game():
     post: Returns a tuple which includes the secret word randomly gen or chosen, and a list of
     valid words from a txt file plus the input or throws a valueerror exception
     """
+
     # Specify "ascii" as its representation (encoding) since its required by pylint.
+
     with open("valid_guesses.txt", "r", encoding="ascii") as valid_nonsecret_words:
         valid_words = [word.rstrip() for word in valid_nonsecret_words.readlines()]
+
     # this file might not have to be encoded with ascii
+
     with open("secret_words.txt", "r", encoding="ascii") as valid_secret_words:
         possible_secret_words = [word.rstrip() for word in valid_secret_words.readlines()]
+
     # Checks if proper amt of arguments is provided
     # Acceptable length for sys.argv might need to be 3 based on acceptable inputs in the doc
     # Ex. python3 wordle.py 123 < 123.in or cat guesses.txt
     # python3 wordle.py (not sure if this would equate to len(sys.argv) == 3), if so...
     # (if len(sys.argv) > 3 & if len(sys.argv) == 2 or 3) would be how to solve that
+
     if len(sys.argv) > 2:
         raise ValueError
     #initializes arg variable
@@ -121,7 +132,9 @@ def prepare_game():
         arg = sys.argv[1]
     else:
         arg = "123"
+
     # Checks if arg is digit, or if arg is avalid 5 char, lowercase word in list of secret words
+
     if arg.isdigit():
         random.seed(int(arg))
         secret_word = random.choice(possible_secret_words)
@@ -129,9 +142,12 @@ def prepare_game():
         secret_word = arg
     else:
         raise ValueError
+    
     # might have to return None on Invalid input instead of raising a value error
     # Returns a tuple (secret_word, valid_words)
+
     return (secret_word, valid_words)
+
 
 def is_valid_guess(guess, valid_guesses):
     """
@@ -142,9 +158,11 @@ def is_valid_guess(guess, valid_guesses):
           being a valid 5 letter lowercase guess.
     post: returns a boolean value
     """
+
     if guess not in valid_guesses:
         return False
     return True
+
 
 def get_feedback(secret_word, guessed_word):
     """
@@ -179,16 +197,19 @@ def get_feedback(secret_word, guessed_word):
             incorrect_letters.remove(guessed_letters[i])
     return color_word(feedback, guessed_word)
 
+
 def main():
     """
     This function is the main loop for the game. It calls prepare_game()
     to set up the game, then it loops continuously until the game is over.
     """
+
     try:
         valid = prepare_game()
     except ValueError:
         print(INVALID_INPUT)
         return
+    
     print_explanation()
     secret_word, valid_guesses = valid
     valid_guesses.append(secret_word)
@@ -196,6 +217,7 @@ def main():
         [CORRECT_COLOR + c + RESET_COLOR for c in secret_word]
     )
     attempts = 6
+
     while attempts > 0:
         prompt = "Enter your " + ATTEMPT_NUMBER[attempts] + " guess: "
         guess = input(prompt)
@@ -212,8 +234,11 @@ def main():
             print("You guessed the word '" + formatted_secret_word + "' correctly.")
             break
         attempts -= 1
+
     if attempts == 0:
         print("Sorry, you've run out of attempts. The correct word was ", end="")
         print("'" + formatted_secret_word + "'.")
+
+
 if __name__ == "__main__":
     main()
