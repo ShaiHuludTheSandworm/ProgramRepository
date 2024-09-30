@@ -84,7 +84,7 @@ def color_word(colors, word):
     post: Returns a string where each character in word is wrapped in the
           corresponding color from colors, followed by RESET_COLOR.
     """
-    
+
     assert len(colors) == 5, "List of colors must have a length of 5"
     assert len(word) == 5, "Word must have a length of 5"
     colored_word = [None] * NUM_LETTERS
@@ -181,10 +181,13 @@ def get_feedback(secret_word, guessed_word):
           There will only be 5 lowercase letters with the ANSI coloring
           in the returned value.
     """
+
     feedback = [None] * NUM_LETTERS
     secret_letters = list(secret_word)
     guessed_letters = list(guessed_word)
     incorrect_letters = []
+    
+    # First pass of for loop for correct and not in word letters, second does wrong spot
     for i in range(NUM_LETTERS):
         if secret_letters[i] == guessed_letters[i]:
             feedback[i] = CORRECT_COLOR
@@ -195,6 +198,7 @@ def get_feedback(secret_word, guessed_word):
         if guessed_letters[i] in incorrect_letters and feedback[i] is not CORRECT_COLOR:
             feedback[i] = WRONG_SPOT_COLOR
             incorrect_letters.remove(guessed_letters[i])
+
     return color_word(feedback, guessed_word)
 
 
