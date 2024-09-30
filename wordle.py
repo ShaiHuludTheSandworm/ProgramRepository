@@ -142,7 +142,6 @@ def prepare_game():
         secret_word = arg
     else:
         raise ValueError
-    
     # might have to return None on Invalid input instead of raising a value error
     # Returns a tuple (secret_word, valid_words)
 
@@ -186,7 +185,6 @@ def get_feedback(secret_word, guessed_word):
     secret_letters = list(secret_word)
     guessed_letters = list(guessed_word)
     incorrect_letters = []
-    
     # First pass of for loop for correct and not in word letters, second does wrong spot
     for i in range(NUM_LETTERS):
         if secret_letters[i] == guessed_letters[i]:
@@ -213,7 +211,6 @@ def main():
     except ValueError:
         print(INVALID_INPUT)
         return
-    
     print_explanation()
     secret_word, valid_guesses = valid
     valid_guesses.append(secret_word)
