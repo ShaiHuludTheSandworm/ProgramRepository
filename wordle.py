@@ -12,11 +12,7 @@ Students. Academic penalties up to and including an F in the course are likely.
 UT EID 1: SLK2633
 UT EID 2: EGB664
 """
-
-import random
-import sys
-
-# ANSI escape codes for text color
+ for text color
 # These must be used by wrapping it around a single character string
 # for the test cases to work. Please use the color_word function to format
 # the feedback properly.
