@@ -15,7 +15,6 @@ UT EID 2: EGB664
 
 import random
 import sys
-import math
 
 # ANSI escape codes for text color
 # These must be used by wrapping it around a single character string
