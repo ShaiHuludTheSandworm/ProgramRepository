@@ -16,53 +16,44 @@ UT EID 2: EGB664
 
 # TODO: implement this function. You may delete this comment when you are done.
 def length_of_longest_substring_n3(s):
-    """
-    Finds the length of the longest substring without repeating characters
-    using a brute force approach (O(N^3)).
+	"""
+	Finds the length of the longest substring without repeating characters
+	using a brute force approach (O(N^3)).
 
-    pre: s is a string of arbitrary length, possibly empty.
-    post: Returns an integer >= 0 representing the length of the longest substring
-          in s that contains no repeating characters.
-    """
-    pass
+	pre: s is a string of arbitrary length, possibly empty.
+	post: Returns an integer >= 0 representing the length of the longest substring
+		  in s that contains no repeating characters.
+	"""
+	pass
 
 
 # TODO: implement this function. You may delete this comment when you are done.
 def length_of_longest_substring_n2(s):
-    """
-    Finds the length of the longest substring without repeating characters
-    using a frequency list approach (O(N^2)), converting each character to
-    their corresponding numeric representation in ASCII as the index into the
-    frequency list.
+	"""
+	Finds the length of the longest substring without repeating characters
+	using a frequency list approach (O(N^2)), converting each character to
+	their corresponding numeric representation in ASCII as the index into the
+	frequency list.
 
-    pre: s is a string of arbitrary length, possibly empty.
-    post: Returns an integer >= 0 representing the length of the longest substring
-          in s that contains no repeating characters.
-    """
-    pass
+	pre: s is a string of arbitrary length, possibly empty.
+	post: Returns an integer >= 0 representing the length of the longest substring
+		  in s that contains no repeating characters.
+	"""
+	pass
 
 
 # TODO: implement this function. You may delete this comment when you are done.
 def length_of_longest_substring_n(s):
-    """
-      letters are added to a set, if the set does not increase when added to then it has found a duplicate
-      a separate variable keeps track of set size before new letter is added
-      if letter is added to set, but the set size does not increase it goes back by the length of the set and checks
-      that letter against the current location in the for loop, if that letter is the duplicate then the length
-      of the substring goes down by 1, if that letter is not the duplicate that letter is removed from the set
-      and the substring length goes down by 1, once the duplicate is reached and the substring went down by 1
-      the set does not have that letter removed since we are already at it again
-    """
-    """
-    Finds the length of the longest substring without repeating characters
-    using a frequency list approach (O(N)), converting each character to
-    their corresponding numeric representation in ASCII as the index into the
-    frequency list. However, this approach stops early, breaking out of the inner
-    loop when a repeating character is found. You may also choose to challenge
-    yourself by implementing a sliding window approach.
-
-    pre: s is a string of arbitrary length, possibly empty.
-    post: Returns an integer >= 0 representing the length of the longest substring
-          in s that contains no repeating characters.
-    """
-    pass
+	"""
+	letters are added to a set, if the set does not increase when added to then it has found a duplicate
+	a separate variable keeps track of set size before new letter is added
+	if letter is added to set, but the set size does not increase it goes back by the length of the set and checks
+	that letter against the current location in the for loop, if that letter is the duplicate then the length
+	of the substring goes down by 1, if that letter is not the duplicate that letter is removed from the set
+	and the substring length goes down by 1, once the duplicate is reached and the substring went down by 1
+	the set does not have that letter removed since we are already at it again
+	"""
+	letter_list = list(s)
+	substring_length = 0
+	longest_substring_length = 0
+	
