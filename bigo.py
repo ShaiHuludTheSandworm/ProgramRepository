@@ -39,7 +39,20 @@ def length_of_longest_substring_n2(s):
 	post: Returns an integer >= 0 representing the length of the longest substring
 		  in s that contains no repeating characters.
 	"""
-	pass
+	#This function works, just not 100% sure if this is O(N^2)
+	max_length = 0
+
+	for start in range(len(s)):
+		freq_list = [0] * 256
+
+		for end in range(len(s)):
+			char_index = ord(s[end])
+			freq_list[char_index] += 1
+
+			if freq_list[char_index] > 1:
+				break
+			max_length = max(max_length, end - start + 1)
+	return max_length
 
 
 # TODO: implement this function. You may delete this comment when you are done.
@@ -56,7 +69,7 @@ def length_of_longest_substring_n(s):
 	"""
 	#This code is based off the google doc instructions, my bad.
 	#Couldn't figure out the other way
-	
+
 	#Keeps track of char using frequency list
 	freq_list = [0] * 256
 	max_length = 0
