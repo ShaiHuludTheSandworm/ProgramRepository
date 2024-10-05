@@ -45,15 +45,35 @@ def length_of_longest_substring_n2(s):
 # TODO: implement this function. You may delete this comment when you are done.
 def length_of_longest_substring_n(s):
 	"""
-	letters are added to a set, if the set does not increase when added to then it has found a duplicate
-	a separate variable keeps track of set size before new letter is added
-	if letter is added to set, but the set size does not increase it goes back by the length of the set and checks
-	that letter against the current location in the for loop, if that letter is the duplicate then the length
-	of the substring goes down by 1, if that letter is not the duplicate that letter is removed from the set
-	and the substring length goes down by 1, once the duplicate is reached and the substring went down by 1
+	Letters are added to a set, if the set does not increase when added to then it has found a duplicate
+	A separate variable keeps track of set size before new letter is added
+	If a letter is added to set, but the set size does not increase it goes back by the length of the set and checks
+	that letter against the current location in the for loop, 
+	if that letter is the duplicate then the length of the substring goes down by 1, 
+	if that letter is not the duplicate that letter is removed from the set and the substring length goes down by 1, 
+	once the duplicate is reached and the substring went down by 1
 	the set does not have that letter removed since we are already at it again
 	"""
-	letter_list = list(s)
-	substring_length = 0
-	longest_substring_length = 0
+	#This code is based off the google doc instructions, my bad.
+	#Couldn't figure out the other way
+	
+	#Keeps track of char using frequency list
+	freq_list = [0] * 256
+	max_length = 0
+	start = 0
+
+	#convert s[end] to ASCII & adds it to frequency list
+	for end in range(len(s)):
+		char_index = ord(s[end])
+		freq_list[char_index] += 1
+
+		#moves start pointer to the right by one & removes duplicate char from list
+		while freq_list[char_index] > 1:
+			freq_list[ord(s[start])] -= 1
+			start += 1
+
+		#Tracks max ss length
+		max_length = max(max_length, end - start + 1)
+	
+	return max_length
 	
