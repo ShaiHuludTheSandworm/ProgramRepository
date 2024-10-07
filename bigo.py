@@ -27,38 +27,16 @@ def length_of_longest_substring_n3(s):
 	max_length = 0
 	characters = {}
 	for beginning in range(len(s)):
-		middle = 0
 		length = 0
-		while middle < len(s):
-			if beginning > middle:
-				slice_of_s = s[middle:beginning]
-			elif middle > beginning:
-				slice_of_s = s[beginning:middle]
-			else:
-				middle += 1
-				break
-			for character in range(len(slice_of_s)):
-				len_of_char = len(characters)
-				characters.add(character)
-				if len(characters) == len_of_char:
-					duplicate = 1
-					while duplicate == 1:
-						if slice_of_s[character - length] == character:
-							duplicate = 0
-							length -= 1
-						else:
-							characters.discard(slice_of_s[character - length])
-							length -= 1
-				else:
-					length += 1
-				max_length = max(max_length, length)
-			middle += 1
-
+		for end in range(beginning, len(s)):
+			length += 1
+			length = max_length
+	return max_length
 
 	
 
 
-# TODO: implement this function. You may delete this comment when you are done.
+
 def length_of_longest_substring_n2(s):
 	"""
 	Finds the length of the longest substring without repeating characters
@@ -86,7 +64,7 @@ def length_of_longest_substring_n2(s):
 	return max_length
 
 
-# TODO: implement this function. You may delete this comment when you are done.
+
 def length_of_longest_substring_n(s):
 	"""
 	Letters are added to a set, if the set does not increase when added to then it has found a duplicate
