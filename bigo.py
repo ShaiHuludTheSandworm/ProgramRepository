@@ -29,7 +29,7 @@ def length_of_longest_substring_n3(s):
 		for end in range(beginning, len(s)):
 			s_substring = s[beginning:]
 			if s_substring.count(s[end]) == 1:
-				length.append(len(s_substring)-end)
+				length.append(len(s_substring)-(end-beginning))
 			else:
 				length.clear()
 		max_length = max(max_length, length[0])
