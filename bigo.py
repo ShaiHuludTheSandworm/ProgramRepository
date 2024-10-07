@@ -24,12 +24,15 @@ def length_of_longest_substring_n3(s):
 		  in s that contains no repeating characters.
 	"""
 	max_length = 0
-	characters = {}
 	for beginning in range(len(s)):
-		length = 0
+		length = []
 		for end in range(beginning, len(s)):
-			length += 1
-			length = max_length
+			s_substring = s[beginning:]
+			if s_substring.count(s[end]) == 1:
+				length.add(len(s_substring))
+			else:
+				length.clear()
+		max_length = max(max_length, length[0])
 	return max_length
 
 
