@@ -31,12 +31,14 @@ def length_of_longest_substring_n3(s):
 		length = 0
 		while middle < len(s):
 			if beginning > middle:
-
+				slice_of_s = s[middle:beginning]
 			elif middle > beginning:
-			
+				slice_of_s = s[beginning:middle]
 			else:
-
-
+				middle += 1
+				break
+			for character in range(len(slice_of_s)):
+				
 			if > max_length:
 				max_length = 
 			middle += 1
