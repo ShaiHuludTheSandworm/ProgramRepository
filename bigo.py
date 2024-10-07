@@ -38,9 +38,20 @@ def length_of_longest_substring_n3(s):
 				middle += 1
 				break
 			for character in range(len(slice_of_s)):
-				
-			if > max_length:
-				max_length = 
+				len_of_char = len(characters)
+				characters.add(character)
+				if len(characters) == len_of_char:
+					duplicate = 1
+					while duplicate == 1:
+						if slice_of_s[character - length] == character:
+							duplicate = 0
+							length -= 1
+						else:
+							characters.discard(slice_of_s[character - length])
+							length -= 1
+				else:
+					length += 1
+				max_length = max(max_length, length)
 			middle += 1
 
 
