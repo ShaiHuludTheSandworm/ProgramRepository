@@ -24,7 +24,7 @@ def length_of_longest_substring_n3(s):
 	post: Returns an integer >= 0 representing the length of the longest substring
 		  in s that contains no repeating characters.
 	"""
-	pass
+	
 
 
 # TODO: implement this function. You may delete this comment when you are done.
