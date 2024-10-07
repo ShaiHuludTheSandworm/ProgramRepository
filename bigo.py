@@ -14,7 +14,6 @@ UT EID 2: EGB664
 """
 
 
-# TODO: implement this function. You may delete this comment when you are done.
 def length_of_longest_substring_n3(s):
 	"""
 	Finds the length of the longest substring without repeating characters
@@ -32,9 +31,6 @@ def length_of_longest_substring_n3(s):
 			length += 1
 			length = max_length
 	return max_length
-
-	
-
 
 
 def length_of_longest_substring_n2(s):
@@ -62,7 +58,6 @@ def length_of_longest_substring_n2(s):
 				break
 			max_length = max(max_length, end - start + 1)
 	return max_length
-
 
 
 def length_of_longest_substring_n(s):
@@ -98,4 +93,3 @@ def length_of_longest_substring_n(s):
 		max_length = max(max_length, end - start + 1)
 	
 	return max_length
-	
