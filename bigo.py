@@ -15,14 +15,6 @@ UT EID 2: EGB664
 
 
 def length_of_longest_substring_n3(s):
-	"""
-	Finds the length of the longest substring without repeating characters
-	using a brute force approach (O(N^3)).
-
-	pre: s is a string of arbitrary length, possibly empty.
-	post: Returns an integer >= 0 representing the length of the longest substring
-		  in s that contains no repeating characters.
-	"""
 	max_length = 0
 	for beginning in range(len(s)):
 		length = []
@@ -37,16 +29,6 @@ def length_of_longest_substring_n3(s):
 
 
 def length_of_longest_substring_n2(s):
-	"""
-	Finds the length of the longest substring without repeating characters
-	using a frequency list approach (O(N^2)), converting each character to
-	their corresponding numeric representation in ASCII as the index into the
-	frequency list.
-
-	pre: s is a string of arbitrary length, possibly empty.
-	post: Returns an integer >= 0 representing the length of the longest substring
-		  in s that contains no repeating characters.
-	"""
 	#This function works, just not 100% sure if this is O(N^2)
 	max_length = 0
 
