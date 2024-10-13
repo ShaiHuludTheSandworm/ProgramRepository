@@ -67,7 +67,7 @@ class Employee(ABC):
 
     def __str__(self):
         return (
-            f"{self.__name}\n
+            f"{self.__name}\n"
             f"\tSalary: ${self.salary}\n"
             f"\tSavings: ${self.savings}\n"
             f"\tHappiness: {self.happiness}%\n"
