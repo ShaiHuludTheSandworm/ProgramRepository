@@ -101,7 +101,7 @@ class Manager(Employee):
     # manager: shows none because managers dont have a manager
     @property
     def manager(self):
-        return self.__Employee__manager
+        return None
 
     # performance: sets up performance veriable to be accessed with the setter method
     @property
