@@ -103,7 +103,16 @@ class TemporaryEmployee(Employee):
             self.happiness += 1
     
     def interact(self, other):
-        if other.
+        if other.__name == self.__manager:
+            if other.happiness > HAPPINESS_THRESHOLD and self.performance >= TEMP_EMPLOYEE_PERFORMANCE_THRESHOLD:
+                self.savings += MANAGER_BONUS
+            elif other.happiness <= HAPPINESS_THRESHOLD:
+                self.salary = self.salary // 2
+                self.happiness -= 5
+                if self.salary == 0:
+                    self.is_employed = False
+        else:
+            pass
 
 
 # TODO: implement this class. You may delete this comment when you are done.
@@ -111,3 +120,16 @@ class PermanentEmployee(Employee):
     """
     A subclass of Employee representing a permanent employee.
     """
+    def work(self):
+        change_performance = random.randint(-10, 10)
+        if change_performance >= 0:
+            self.happiness += 1
+    
+    def interact(self, other):
+        if other.__name == self.__manager:
+            if other.happiness > HAPPINESS_THRESHOLD and self.performance > PERM_EMPLOYEE_PERFORMANCE_THRESHOLD:
+                self.savings += MANAGER_BONUS
+            elif other.happiness <= HAPPINESS_THRESHOLD:
+                self.happiness -= 1
+        else:
+            pass
