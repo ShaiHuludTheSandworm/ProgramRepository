@@ -139,6 +139,9 @@ class TemporaryEmployee(Employee):
     def name(self):
         return self.get_name
 
+    def manager(self):
+        return self.get_manager
+
     @property
     def performance(self):
         return self._performance
@@ -194,6 +197,9 @@ class PermanentEmployee(Employee):
     """
     def name(self):
         return self.get_name
+
+    def manager(self):
+        return self.get_manager
 
     @property
     def performance(self):
