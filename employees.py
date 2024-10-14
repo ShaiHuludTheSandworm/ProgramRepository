@@ -50,16 +50,16 @@ class Employee(ABC):
     def get_name(self):
         return self.__name
     
-    # this method adds a getter for manager so it can be accessed by subclasses
+    # get_manager: this method adds a getter for manager so it can be accessed by subclasses
     def get_manager(self):
         return self.__manager
 
-    # this is a method that needs to be overwritten in subclasses to work
+    # work: this is a method that needs to be overwritten in subclasses to work
     @abstractmethod
     def work(self):
         pass
 
-    # this method is the basic schema for interactions between employees
+    # interact: this method is the basic schema for interactions between employees
     def interact(self, other):
         if other.__name not in self.relationships:
             self.relationships[other.__name] = 0
@@ -73,13 +73,13 @@ class Employee(ABC):
             self.happiness -= 1
         self.happiness = adjust_employee_values(self.happiness)
 
-    # how much a money and happiness an employee loses on a normal day
+    # daily_expense: how much a money and happiness an employee loses on a normal day
     def daily_expense(self):
         self.savings -= DAILY_EXPENSE
         self.happiness -= 1
         self.happiness = adjust_employee_values(self.happiness)
 
-    # print statement to display most all variables of a employee
+    # __str__: print statement to display most all variables of a employee
     def __str__(self):
         return (
             f"{self.__name}\n"
@@ -94,42 +94,42 @@ class Manager(Employee):
     """
     A subclass of Employee representing a manager.
     """
-    # allows for the employees name to be accessed in a subclass
+    # name: allows for the employees name to be accessed in a subclass
     @property
     def name(self):
         return self._Employee__name
 
-    # allows for the employees' manager to be accessed in a subclass
+    # manager: allows for the employees' manager to be accessed in a subclass
     @property
     def manager(self):
         return self._Employee__manager
 
-    # sets up performance veriable to be accessed with the setter method
+    # performance: sets up performance veriable to be accessed with the setter method
     @property
     def performance(self):
         return self._performance
     
-    # allows for changes to the performance variable to be corrected if outside parameters
+    # performance: allows for changes to performance to be corrected if outside parameters
     @performance.setter
     def performance(self, new_performance):
         self._performance = max(min(new_performance, 100), 0)
 
-    # sets up happiness veriable to be accessed with the setter method
+    # happiness: sets up happiness veriable to be accessed with the setter method
     @property
     def happiness(self):
         return self._happiness
     
-    # allows for changes to the happiness variable to be corrected if outside parameters
+    # happiness: allows for changes to happiness to be corrected if outside parameters
     @happiness.setter
     def happiness(self, new_happiness):
         self._happiness = max(min(new_happiness, 100), 0)
 
-    # sets up salary veriable to be accessed with the setter method
+    # salary: sets up salary veriable to be accessed with the setter method
     @property
     def salary(self):
         return self._salary
     
-    # allows for changes to the salary variable to raise an ValueError if outside parameters
+    # salary: allows for changes to salary to raise an ValueError if outside parameters
     @salary.setter
     def salary(self, new_salary):
         if new_salary >= 0:
@@ -137,7 +137,7 @@ class Manager(Employee):
         elif new_salary < 0:
             raise ValueError(SALARY_ERROR_MESSAGE)
 
-    # the specialized work method for the manager class
+    # work: the specialized work method for the manager class
     def work(self):
         change_performance = random.randint(-5, 5)
         self.performance += change_performance
@@ -155,42 +155,42 @@ class TemporaryEmployee(Employee):
     """
     A subclass of Employee representing a temporary employee.
     """
-    # allows for the employees name to be accessed in a subclass
+    # name: allows for the employees name to be accessed in a subclass
     @property
     def name(self):
         return self._Employee__name
 
-    # allows for the employees' manager to be accessed in a subclass
+    # manager: allows for the employees' manager to be accessed in a subclass
     @property
     def manager(self):
         return self._Employee__manager
 
-    # sets up performance veriable to be accessed with the setter method
+    # performance: sets up performance veriable to be accessed with the setter method
     @property
     def performance(self):
         return self._performance
     
-    # allows for changes to the performance variable to be corrected if outside parameters
+    # performance: allows for changes to performance to be corrected if outside parameters
     @performance.setter
     def performance(self, new_performance):
         self._performance = max(min(new_performance, 100), 0)
 
-    # sets up happiness veriable to be accessed with the setter method
+    # happiness: sets up happiness veriable to be accessed with the setter method
     @property
     def happiness(self):
         return self._happiness
     
-    # allows for changes to the happiness variable to be corrected if outside parameters
+    # happiness: allows for changes to happiness to be corrected if outside parameters
     @happiness.setter
     def happiness(self, new_happiness):
         self._happiness = max(min(new_happiness, 100), 0)
 
-    # sets up salary veriable to be accessed with the setter method
+    # salary: sets up salary veriable to be accessed with the setter method
     @property
     def salary(self):
         return self._salary
 
-    # allows for changes to the salary variable to raise an ValueError if outside parameters
+    # salary: allows for changes to salary to raise an ValueError if outside parameters
     @salary.setter
     def salary(self, new_salary):
         if new_salary >= 0:
@@ -198,7 +198,7 @@ class TemporaryEmployee(Employee):
         elif new_salary < 0:
             raise ValueError(SALARY_ERROR_MESSAGE)
 
-    # the specialized temp employee work method
+    # work: the specialized temp employee work method
     def work(self):
         change_performance = random.randint(-15, 15)
         if change_performance <= 0:
@@ -208,7 +208,7 @@ class TemporaryEmployee(Employee):
         self.performance = adjust_employee_values(self.performance)
         self.happiness = adjust_employee_values(self.happiness)
     
-    # the interact method for temp employees, which allows for pay drops or termination
+    # interact: the interact method for temp employees, which allows for pay drops or termination
     def interact(self, other):
         super().interact(other)
         if other.name == self.manager:
