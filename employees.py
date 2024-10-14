@@ -106,7 +106,7 @@ class Manager(Employee):
     # performance: sets up performance veriable to be accessed with the setter method
     @property
     def performance(self):
-        return self._performance
+        return self.performance
     # performance: allows for changes to performance to be corrected if outside parameters
     @performance.setter
     def performance(self, new_performance):
@@ -115,7 +115,7 @@ class Manager(Employee):
     # happiness: sets up happiness veriable to be accessed with the setter method
     @property
     def happiness(self):
-        return self._happiness
+        return self.happiness
     # happiness: allows for changes to happiness to be corrected if outside parameters
     @happiness.setter
     def happiness(self, new_happiness):
