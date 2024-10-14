@@ -86,6 +86,10 @@ class Manager(Employee):
         super().__init__(name, manager, salary, savings)
 
     @property
+    def name(self):
+        return self._name
+
+    @property
     def performance(self):
         return self._performance
     
@@ -120,6 +124,10 @@ class TemporaryEmployee(Employee):
     """
     def __init__(self, name, manager, salary, savings):
         super().__init__(name, manager, salary, savings)
+
+    @property
+    def name(self):
+        return self._name
 
     @property
     def performance(self):
@@ -165,6 +173,10 @@ class PermanentEmployee(Employee):
     """
     def __init__(self, name, manager, salary, savings):
         super().__init__(name, manager, salary, savings)
+
+    @property
+    def name(self):
+        return self._name
 
     @property
     def performance(self):
