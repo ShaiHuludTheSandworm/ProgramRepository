@@ -84,7 +84,7 @@ class Manager(Employee):
     """
     @property
     def name(self):
-        return self.__name
+        return self._Employee__name
 
     @property
     def performance(self):
@@ -132,7 +132,7 @@ class TemporaryEmployee(Employee):
     """
     @property
     def name(self):
-        return self.__name
+        return self._Employee__name
 
     @property
     def performance(self):
@@ -172,7 +172,7 @@ class TemporaryEmployee(Employee):
     
     def interact(self, other):
         super().interact(other)
-        if other.name == self.__manager:
+        if other.__name == self.__manager:
             if other.happiness > HAPPINESS_THRESHOLD and self.performance >= TEMP_EMPLOYEE_PERFORMANCE_THRESHOLD:
                 self.savings += MANAGER_BONUS
             elif other.happiness <= HAPPINESS_THRESHOLD:
@@ -189,7 +189,7 @@ class PermanentEmployee(Employee):
     """
     @property
     def name(self):
-        return self.__name
+        return self._Employee__name
 
     @property
     def performance(self):
@@ -227,7 +227,7 @@ class PermanentEmployee(Employee):
     
     def interact(self, other):
         super().interact(other)
-        if other.name == self.__manager:
+        if other.__name == self.__manager:
             if other.happiness > HAPPINESS_THRESHOLD and self.performance > PERM_EMPLOYEE_PERFORMANCE_THRESHOLD:
                 self.savings += MANAGER_BONUS
             elif other.happiness <= HAPPINESS_THRESHOLD:
