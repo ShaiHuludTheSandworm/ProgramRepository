@@ -90,7 +90,6 @@ class Manager(Employee):
             self.happiness += 1
 
 
-# TODO: implement this class. You may delete this comment when you are done.
 class TemporaryEmployee(Employee):
     """
     A subclass of Employee representing a temporary employee.
@@ -103,6 +102,7 @@ class TemporaryEmployee(Employee):
             self.happiness += 1
     
     def interact(self, other):
+        super().interact()
         if other.__name == self.__manager:
             if other.happiness > HAPPINESS_THRESHOLD and self.performance >= TEMP_EMPLOYEE_PERFORMANCE_THRESHOLD:
                 self.savings += MANAGER_BONUS
@@ -111,11 +111,8 @@ class TemporaryEmployee(Employee):
                 self.happiness -= 5
                 if self.salary == 0:
                     self.is_employed = False
-        else:
-            pass
 
 
-# TODO: implement this class. You may delete this comment when you are done.
 class PermanentEmployee(Employee):
     """
     A subclass of Employee representing a permanent employee.
@@ -126,10 +123,9 @@ class PermanentEmployee(Employee):
             self.happiness += 1
     
     def interact(self, other):
+        super().interact()
         if other.__name == self.__manager:
             if other.happiness > HAPPINESS_THRESHOLD and self.performance > PERM_EMPLOYEE_PERFORMANCE_THRESHOLD:
                 self.savings += MANAGER_BONUS
             elif other.happiness <= HAPPINESS_THRESHOLD:
                 self.happiness -= 1
-        else:
-            pass
