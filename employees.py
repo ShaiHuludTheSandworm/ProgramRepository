@@ -274,7 +274,7 @@ class PermanentEmployee(Employee):
     def work(self):
         change_performance = random.randint(-10, 10)
         if change_performance >= 0:
-            self.happiness += 1
+            happiness(self.happiness + 1)
         self.performance = adjust_employee_values(self.performance)
         self.happiness = adjust_employee_values(self.happiness)
     
