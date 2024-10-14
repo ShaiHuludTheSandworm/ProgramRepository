@@ -95,6 +95,15 @@ class TemporaryEmployee(Employee):
     """
     A subclass of Employee representing a temporary employee.
     """
+    def work(self):
+        change_performance = random.randint(-15, 15)
+        if change_performance <= 0:
+            self.happiness -= 2
+        else:
+            self.happiness += 1
+    
+    def interact(self, other):
+        if other.
 
 
 # TODO: implement this class. You may delete this comment when you are done.
