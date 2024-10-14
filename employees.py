@@ -48,7 +48,7 @@ class Employee(ABC):
     def get_name(self):
         # get_name: this method adds a getter for name so it can be accessed by subclasses
         return self.__name
-    
+
     def get_manager(self):
         # get_manager: this method adds a getter for manager so it can be accessed by subclasses
         return self.__manager
@@ -64,19 +64,19 @@ class Employee(ABC):
             self.relationships[other.__name] = 0
 
         if self.relationships[other.__name] > RELATIONSHIP_THRESHOLD:
-            self._happiness += 1
-        elif self._happiness >= HAPPINESS_THRESHOLD and other.happiness >= HAPPINESS_THRESHOLD:
+            self.happiness += 1
+        elif self.happiness >= HAPPINESS_THRESHOLD and other.happiness >= HAPPINESS_THRESHOLD:
             self.relationships[other.__name] += 1
         else:
             self.relationships[other.__name] -= 1
-            self._happiness -= 1
-        self._happiness = adjust_employee_values(self._happiness)
+            self.happiness -= 1
+        self.happiness = adjust_employee_values(self.happiness)
 
     def daily_expense(self):
         # daily_expense: how much a money and happiness an employee loses on a normal day
         self.savings -= DAILY_EXPENSE
-        self._happiness -= 1
-        self._happiness = adjust_employee_values(self._happiness)
+        self.happiness -= 1
+        self.happiness = adjust_employee_values(self.happiness)
 
     def __str__(self):
         # __str__: print statement to display most all variables of a employee
@@ -127,7 +127,7 @@ class Manager(Employee):
     def salary(self):
         # salary: sets up salary veriable to be accessed with the setter method
         return self._salary
-    
+
     @salary.setter
     def salary(self, new_salary):
         # salary: allows for changes to salary to raise an ValueError if outside parameters
@@ -139,15 +139,15 @@ class Manager(Employee):
     def work(self):
         # work: the specialized work method for the manager class
         change_performance = random.randint(-5, 5)
-        self._performance += change_performance
+        self.performance += change_performance
         if change_performance <= 0:
-            self._happiness -= 1
+            self.happiness -= 1
             for key in self.relationships:
                 self.relationships[key] -= 1
         else:
             self.happiness += 1
-        self._performance = adjust_employee_values(self._performance)
-        self._happiness = adjust_employee_values(self._happiness)
+        self.performance = adjust_employee_values(self.performance)
+        self.happiness = adjust_employee_values(self.happiness)
 
 
 class TemporaryEmployee(Employee):
@@ -158,37 +158,37 @@ class TemporaryEmployee(Employee):
     def name(self):
         # name: allows for the employees name to be accessed in a subclass
         return self._Employee__name
-    
+
     @property
     def manager(self):
         # manager: allows for the employees' manager to be accessed in a subclass
         return self._Employee__manager
-    
+
     @property
     def performance(self):
         # performance: sets up performance veriable to be accessed with the setter method
         return self._performance
-    
+
     @performance.setter
     def performance(self, new_performance):
         # performance: allows for changes to performance to be corrected if outside parameters
         self._performance = max(min(new_performance, 100), 0)
-    
+
     @property
     def happiness(self):
         # happiness: sets up happiness veriable to be accessed with the setter method
         return self._happiness
-    
+
     @happiness.setter
     def happiness(self, new_happiness):
         # happiness: allows for changes to happiness to be corrected if outside parameters
         self._happiness = max(min(new_happiness, 100), 0)
-    
+
     @property
     def salary(self):
         # salary: sets up salary veriable to be accessed with the setter method
         return self._salary
-    
+
     @salary.setter
     def salary(self, new_salary):
         # salary: allows for changes to salary to raise an ValueError if outside parameters
@@ -196,28 +196,28 @@ class TemporaryEmployee(Employee):
             self._salary = new_salary
         elif new_salary < 0:
             raise ValueError(SALARY_ERROR_MESSAGE)
-    
+
     def work(self):
         # work: the specialized temp employee work method
         change_performance = random.randint(-15, 15)
         if change_performance <= 0:
-            self._happiness -= 2
+            self.happiness -= 2
         else:
-            self._happiness += 1
-        self._performance = adjust_employee_values(self._performance)
-        self._happiness = adjust_employee_values(self._happiness)
-    
+            self.happiness += 1
+        self.performance = adjust_employee_values(self.performance)
+        self.happiness = adjust_employee_values(self.happiness)
+
     def interact(self, other):
         # interact: the interact method for temp employees, which allows for pay drops or termination
         super().interact(other)
         if other.name == self.manager:
             if other.happiness > HAPPINESS_THRESHOLD and \
-            self._performance >= TEMP_EMPLOYEE_PERFORMANCE_THRESHOLD:
+            self.performance >= TEMP_EMPLOYEE_PERFORMANCE_THRESHOLD:
                 self.savings += MANAGER_BONUS
             elif other.happiness <= HAPPINESS_THRESHOLD:
                 self.salary = self.salary // 2
-                self._happiness -= 5
-                self._happiness = adjust_employee_values(self._happiness)
+                self.happiness -= 5
+                self.happiness = adjust_employee_values(self.happiness)
                 if self.salary == 0:
                     self.is_employed = False
 
@@ -230,37 +230,37 @@ class PermanentEmployee(Employee):
     def name(self):
         # allows for the employees name to be accessed in a subclass
         return self._Employee__name
-    
+
     @property
     def manager(self):
         # allows for the employees' manager to be accessed in a subclass
         return self._Employee__manager
-    
+
     @property
     def performance(self):
         # sets up performance veriable to be accessed with the setter method
         return self._performance
-    
+
     @performance.setter
     def performance(self, new_performance):
         # allows for changes to the performance variable to be corrected if outside parameters
         self._performance = max(min(new_performance, 100), 0)
-    
+
     @property
     def happiness(self):
         # sets up happiness veriable to be accessed with the setter method
         return self._happiness
-    
+
     @happiness.setter
     def happiness(self, new_happiness):
         # allows for changes to the happiness variable to be corrected if outside parameters
         self._happiness = max(min(new_happiness, 100), 0)
-    
+
     @property
     def salary(self):
         # sets up salary veriable to be accessed with the setter method
         return self._salary
-    
+
     @salary.setter
     def salary(self, new_salary):
         # allows for changes to the salary variable to raise an ValueError if outside parameters
@@ -268,25 +268,25 @@ class PermanentEmployee(Employee):
             self._salary = new_salary
         elif new_salary < 0:
             raise ValueError(SALARY_ERROR_MESSAGE)
-    
+
     def work(self):
         # the specialized perm employee work method
         change_performance = random.randint(-10, 10)
         if change_performance >= 0:
-            self._happiness += 1
-        self._performance = adjust_employee_values(self._performance)
-        self._happiness = adjust_employee_values(self._happiness)
-    
+            self.happiness += 1
+        self.performance = adjust_employee_values(self.performance)
+        self.happiness = adjust_employee_values(self.happiness)
+
     def interact(self, other):
         # the interact method for perm employees, lacking a decrease in pay or termination
         super().interact(other)
         if other.name == self.manager:
             if other.happiness > HAPPINESS_THRESHOLD and \
-            self._performance > PERM_EMPLOYEE_PERFORMANCE_THRESHOLD:
+            self.performance > PERM_EMPLOYEE_PERFORMANCE_THRESHOLD:
                 self.savings += MANAGER_BONUS
             elif other.happiness <= HAPPINESS_THRESHOLD:
-                self._happiness -= 1
-                self._happiness = adjust_employee_values(self._happiness)
+                self.happiness -= 1
+                self.happiness = adjust_employee_values(self.happiness)
 
 # adjust_employee_values: puts happiness and performance back into established parameters
 def adjust_employee_values(value):
