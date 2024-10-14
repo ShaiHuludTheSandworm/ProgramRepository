@@ -81,7 +81,6 @@ class Manager(Employee):
     def work(self):
         change_performance = random.randint(-5, 5)
         self.performance += change_performance
-
         if change_performance <= 0:
             self.happiness -= 1
             for key in self.relationships:
@@ -129,3 +128,11 @@ class PermanentEmployee(Employee):
                 self.savings += MANAGER_BONUS
             elif other.happiness <= HAPPINESS_THRESHOLD:
                 self.happiness -= 1
+
+
+def check_employee_values(value, only_min):
+    if value > PERCENTAGE_MAX and only_min == 0:
+        return 100
+    elif value < PERCENTAGE_MIN:
+        return 0
+    return value
