@@ -279,6 +279,6 @@ class PermanentEmployee(Employee):
                 self.happiness -= 1
                 self.happiness = adjust_employee_values(self.happiness)
 
-
+# adjust_employee_values: puts happiness and performance back into established parameters
 def adjust_employee_values(value):
     return max(min(value, 100), 0)
