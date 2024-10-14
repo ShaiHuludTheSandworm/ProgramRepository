@@ -264,9 +264,9 @@ class PermanentEmployee(Employee):
     def work(self):
         change_performance = random.randint(-10, 10)
         if change_performance >= 0:
-            self.happiness += 1
-        self.performance = adjust_employee_values(self.performance)
-        self.happiness = adjust_employee_values(self.happiness)
+            self._happiness += 1
+        self._performance = adjust_employee_values(self._performance)
+        self._happiness = adjust_employee_values(self._happiness)
     
     # the interact method for perm employees, lacking a decrease in pay or termination
     def interact(self, other):
