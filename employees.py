@@ -84,7 +84,7 @@ class Manager(Employee):
     """
     @property
     def name(self):
-        return self._name
+        return self.__name
 
     @property
     def performance(self):
@@ -132,7 +132,7 @@ class TemporaryEmployee(Employee):
     """
     @property
     def name(self):
-        return self._name
+        return self.__name
 
     @property
     def performance(self):
@@ -189,7 +189,7 @@ class PermanentEmployee(Employee):
     """
     @property
     def name(self):
-        return self._name
+        return self.__name
 
     @property
     def performance(self):
