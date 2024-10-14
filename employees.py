@@ -140,7 +140,6 @@ class PermanentEmployee(Employee):
             elif other.happiness <= HAPPINESS_THRESHOLD:
                 self.happiness -= 1
                 self.happiness = adjust_employee_values(self.happiness)
-            
 
 
 def adjust_employee_values(value):
