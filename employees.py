@@ -245,8 +245,4 @@ class PermanentEmployee(Employee):
 
 
 def adjust_employee_values(value):
-    if value > PERCENTAGE_MAX:
-        return 100
-    elif value < PERCENTAGE_MIN:
-        return 0
-    return value
+    return max(min(value, 100), 0)
