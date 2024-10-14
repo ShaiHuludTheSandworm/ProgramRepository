@@ -94,34 +94,42 @@ class Manager(Employee):
     """
     A subclass of Employee representing a manager.
     """
+    # allows for the employees name to be accessed in a subclass
     @property
     def name(self):
         return self._Employee__name
 
+    # allows for the employees' manager to be accessed in a subclass
     @property
     def manager(self):
         return self._Employee__manager
 
+    # sets up performance veriable to be accessed with the setter method
     @property
     def performance(self):
         return self._performance
     
+    # allows for changes to the performance variable to be corrected if outside parameters
     @performance.setter
     def performance(self, new_performance):
         self._performance = max(min(new_performance, 100), 0)
 
+    # sets up happiness veriable to be accessed with the setter method
     @property
     def happiness(self):
         return self._happiness
     
+    # allows for changes to the happiness variable to be corrected if outside parameters
     @happiness.setter
     def happiness(self, new_happiness):
         self._happiness = max(min(new_happiness, 100), 0)
 
+    # sets up salary veriable to be accessed with the setter method
     @property
     def salary(self):
         return self._salary
     
+    # allows for changes to the salary variable to raise an ValueError if outside parameters
     @salary.setter
     def salary(self, new_salary):
         if new_salary >= 0:
@@ -147,34 +155,42 @@ class TemporaryEmployee(Employee):
     """
     A subclass of Employee representing a temporary employee.
     """
+    # allows for the employees name to be accessed in a subclass
     @property
     def name(self):
         return self._Employee__name
 
+    # allows for the employees' manager to be accessed in a subclass
     @property
     def manager(self):
         return self._Employee__manager
 
+    # sets up performance veriable to be accessed with the setter method
     @property
     def performance(self):
         return self._performance
     
+    # allows for changes to the performance variable to be corrected if outside parameters
     @performance.setter
     def performance(self, new_performance):
         self._performance = max(min(new_performance, 100), 0)
 
+    # sets up happiness veriable to be accessed with the setter method
     @property
     def happiness(self):
         return self._happiness
     
+    # allows for changes to the happiness variable to be corrected if outside parameters
     @happiness.setter
     def happiness(self, new_happiness):
         self._happiness = max(min(new_happiness, 100), 0)
 
+    # sets up salary veriable to be accessed with the setter method
     @property
     def salary(self):
         return self._salary
-    
+
+    # allows for changes to the salary variable to raise an ValueError if outside parameters
     @salary.setter
     def salary(self, new_salary):
         if new_salary >= 0:
@@ -211,35 +227,42 @@ class PermanentEmployee(Employee):
     """
     A subclass of Employee representing a permanent employee.
     """
+    # allows for the employees name to be accessed in a subclass
     @property
     def name(self):
         return self._Employee__name
 
+    # allows for the employees' manager to be accessed in a subclass
     @property
     def manager(self):
         return self._Employee__manager
 
+    # sets up performance veriable to be accessed with the setter method
     @property
     def performance(self):
         return self._performance
     
+    # allows for changes to the performance variable to be corrected if outside parameters
     @performance.setter
     def performance(self, new_performance):
         self._performance = max(min(new_performance, 100), 0)
 
+    # sets up happiness veriable to be accessed with the setter method
     @property
     def happiness(self):
         return self._happiness
     
+    # allows for changes to the happiness variable to be corrected if outside parameters
     @happiness.setter
     def happiness(self, new_happiness):
         self._happiness = max(min(new_happiness, 100), 0)
 
-
+    # sets up salary veriable to be accessed with the setter method
     @property
     def salary(self):
         return self._salary
-    
+
+    # allows for changes to the salary variable to raise an ValueError if outside parameters
     @salary.setter
     def salary(self, new_salary):
         if new_salary >= 0:
