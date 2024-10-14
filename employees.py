@@ -99,10 +99,10 @@ class Manager(Employee):
     def name(self):
         return self._Employee__name
 
-    # manager: allows for the employees' manager to be accessed in a subclass
+    # manager: shows none because managers dont have a manager
     @property
     def manager(self):
-        return self._Employee__manager
+        return None
 
     # performance: sets up performance veriable to be accessed with the setter method
     @property
