@@ -61,10 +61,12 @@ class Employee(ABC):
         else:
             self.relationships[other.__name] -= 1
             self.happiness -= 1
+        self.happiness = adjust_employee_values(self.happiness)
 
     def daily_expense(self):
         self.savings -= DAILY_EXPENSE
         self.happiness -= 1
+        self.happiness = adjust_employee_values(self.happiness)
 
     def __str__(self):
         return (
@@ -89,6 +91,8 @@ class Manager(Employee):
                 self.relationships[key] -= 1
         else:
             self.happiness += 1
+        self.performance = adjust_employee_values(self.performance)
+        self.happiness = adjust_employee_values(self.happiness)
 
 
 class TemporaryEmployee(Employee):
@@ -101,6 +105,8 @@ class TemporaryEmployee(Employee):
             self.happiness -= 2
         else:
             self.happiness += 1
+        self.performance = adjust_employee_values(self.performance)
+        self.happiness = adjust_employee_values(self.happiness)
     
     def interact(self, other):
         super().interact()
@@ -110,6 +116,7 @@ class TemporaryEmployee(Employee):
             elif other.happiness <= HAPPINESS_THRESHOLD:
                 self.salary = self.salary // 2
                 self.happiness -= 5
+                self.happiness = adjust_employee_values(self.happiness)
                 if self.salary == 0:
                     self.is_employed = False
 
@@ -122,6 +129,8 @@ class PermanentEmployee(Employee):
         change_performance = random.randint(-10, 10)
         if change_performance >= 0:
             self.happiness += 1
+        self.performance = adjust_employee_values(self.performance)
+        self.happiness = adjust_employee_values(self.happiness)
     
     def interact(self, other):
         super().interact()
@@ -130,10 +139,12 @@ class PermanentEmployee(Employee):
                 self.savings += MANAGER_BONUS
             elif other.happiness <= HAPPINESS_THRESHOLD:
                 self.happiness -= 1
+                self.happiness = adjust_employee_values(self.happiness)
+            
 
 
-def check_employee_values(value, only_min):
-    if value > PERCENTAGE_MAX and only_min == 0:
+def adjust_employee_values(value):
+    if value > PERCENTAGE_MAX:
         return 100
     elif value < PERCENTAGE_MIN:
         return 0
