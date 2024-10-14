@@ -54,10 +54,12 @@ class Employee(ABC):
     def get_manager(self):
         return self.__manager
 
+    # this is a method that needs to be overwritten in subclasses to work
     @abstractmethod
     def work(self):
         pass
 
+    # this method is the basic schema for interactions between employees
     def interact(self, other):
         if other.__name not in self.relationships:
             self.relationships[other.__name] = 0
@@ -71,11 +73,13 @@ class Employee(ABC):
             self.happiness -= 1
         self.happiness = adjust_employee_values(self.happiness)
 
+    # how much a money and happiness an employee loses on a normal day
     def daily_expense(self):
         self.savings -= DAILY_EXPENSE
         self.happiness -= 1
         self.happiness = adjust_employee_values(self.happiness)
 
+    # print statement to display most all variables of a employee
     def __str__(self):
         return (
             f"{self.__name}\n"
@@ -125,6 +129,7 @@ class Manager(Employee):
         elif new_salary < 0:
             raise ValueError(SALARY_ERROR_MESSAGE)
 
+    # the specialized work method for the manager class
     def work(self):
         change_performance = random.randint(-5, 5)
         self.performance += change_performance
@@ -177,6 +182,7 @@ class TemporaryEmployee(Employee):
         elif new_salary < 0:
             raise ValueError(SALARY_ERROR_MESSAGE)
 
+    # the specialized temp employee work method
     def work(self):
         change_performance = random.randint(-15, 15)
         if change_performance <= 0:
@@ -186,6 +192,7 @@ class TemporaryEmployee(Employee):
         self.performance = adjust_employee_values(self.performance)
         self.happiness = adjust_employee_values(self.happiness)
     
+    # the interact method for temp employees, which allows for pay drops or termination
     def interact(self, other):
         super().interact(other)
         if other.name == self.manager:
@@ -239,6 +246,8 @@ class PermanentEmployee(Employee):
             self._salary = new_salary
         elif new_salary < 0:
             raise ValueError(SALARY_ERROR_MESSAGE)
+    
+    # the specialized perm employee work method
     def work(self):
         change_performance = random.randint(-10, 10)
         if change_performance >= 0:
@@ -246,6 +255,7 @@ class PermanentEmployee(Employee):
         self.performance = adjust_employee_values(self.performance)
         self.happiness = adjust_employee_values(self.happiness)
     
+    # the interact method for perm employees, lacking a decrease in pay or termination
     def interact(self, other):
         super().interact(other)
         if other.name == self.manager:
