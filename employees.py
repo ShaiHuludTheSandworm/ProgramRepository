@@ -105,6 +105,17 @@ class Manager(Employee):
     def happiness(self, new_happiness):
         self._happiness = max(min(new_happiness, 100), 0)
 
+    @property
+    def salary(self):
+        return self._salary
+    
+    @salary.setter
+    def salary(self, new_salary):
+        if new_salary >= 0:
+            self._salary = new_salary
+        elif new_salary < 0:
+            raise ValueError(SALARY_ERROR_MESSAGE)
+
     def work(self):
         change_performance = random.randint(-5, 5)
         self.performance += change_performance
@@ -144,6 +155,17 @@ class TemporaryEmployee(Employee):
     @happiness.setter
     def happiness(self, new_happiness):
         self._happiness = max(min(new_happiness, 100), 0)
+
+    @property
+    def salary(self):
+        return self._salary
+    
+    @salary.setter
+    def salary(self, new_salary):
+        if new_salary >= 0:
+            self._salary = new_salary
+        elif new_salary < 0:
+            raise ValueError(SALARY_ERROR_MESSAGE)
 
     def work(self):
         change_performance = random.randint(-15, 15)
@@ -194,6 +216,17 @@ class PermanentEmployee(Employee):
     def happiness(self, new_happiness):
         self._happiness = max(min(new_happiness, 100), 0)
 
+
+    @property
+    def salary(self):
+        return self._salary
+    
+    @salary.setter
+    def salary(self, new_salary):
+        if new_salary >= 0:
+            self._salary = new_salary
+        elif new_salary < 0:
+            raise ValueError(SALARY_ERROR_MESSAGE)
     def work(self):
         change_performance = random.randint(-10, 10)
         if change_performance >= 0:
