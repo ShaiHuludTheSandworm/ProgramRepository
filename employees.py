@@ -182,7 +182,7 @@ class TemporaryEmployee(Employee):
     # salary: sets up salary veriable to be accessed with the setter method
     @property
     def salary(self):
-        return self._salar
+        return self._salary
     # salary: allows for changes to salary to raise an ValueError if outside parameters
     @salary.setter
     def salary(self, new_salary):
