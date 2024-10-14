@@ -29,7 +29,6 @@ PERCENTAGE_MIN = 0
 SALARY_ERROR_MESSAGE = "Salary must be non-negative."
 
 
-# TODO: implement this class. You may delete this comment when you are done.
 class Employee(ABC):
     """
     Abstract base class representing a generic employee in the system.
@@ -73,10 +72,8 @@ class Employee(ABC):
             f"\tHappiness: {self.happiness}%\n"
             f"\tPerformance: {self.performance}%"
         )
-        
 
 
-# TODO: implement this class. You may delete this comment when you are done.
 class Manager(Employee):
     """
     A subclass of Employee representing a manager.
