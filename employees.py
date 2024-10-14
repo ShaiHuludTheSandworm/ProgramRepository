@@ -46,7 +46,7 @@ class Employee(ABC):
             raise ValueError(SALARY_ERROR_MESSAGE)
         self.salary = salary
 
-    # this method adds a getter for name so it can be accessed by subclasses
+    # get_name: this method adds a getter for name so it can be accessed by subclasses
     def get_name(self):
         return self.__name
     
