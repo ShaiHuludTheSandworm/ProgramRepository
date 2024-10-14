@@ -143,7 +143,7 @@ class Manager(Employee):
                 self.relationships[key] -= 1
         else:
             self.happiness += 1
-        self._performance = adjust_employee_values(self.perf_performanceormance)
+        self._performance = adjust_employee_values(self._performance)
         self._happiness = adjust_employee_values(self._happiness)
 
 
