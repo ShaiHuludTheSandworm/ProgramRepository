@@ -135,7 +135,7 @@ class Manager(Employee):
 
     # work: the specialized work method for the manager class
     def work(self):
-        change_performance = random.randint(-4, 4)
+        change_performance = random.randint(-5, 6)
         self._performance += change_performance
         if change_performance <= 0:
             self._happiness -= 1
@@ -193,7 +193,7 @@ class TemporaryEmployee(Employee):
 
     # work: the specialized temp employee work method
     def work(self):
-        change_performance = random.randint(-14, 14)
+        change_performance = random.randint(-15, 16)
         if change_performance <= 0:
             self._happiness -= 2
         else:
@@ -262,7 +262,7 @@ class PermanentEmployee(Employee):
     
     # the specialized perm employee work method
     def work(self):
-        change_performance = random.randint(-9, 9)
+        change_performance = random.randint(-10, 11)
         if change_performance >= 0:
             self._happiness += 1
         self._performance = adjust_employee_values(self._performance)
