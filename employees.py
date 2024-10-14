@@ -121,7 +121,6 @@ class TemporaryEmployee(Employee):
     def happiness(self, new_happiness):
         self._happiness = max(min(new_happiness, 100), 0)
 
-
     def work(self):
         change_performance = random.randint(-15, 15)
         if change_performance <= 0:
@@ -150,6 +149,22 @@ class PermanentEmployee(Employee):
     """
     def __init__(self, name, manager, salary, savings):
         super().__init__(name, manager, salary, savings)
+
+    @property
+    def performance(self):
+        return self._performance
+    
+    @performance.setter
+    def performance(self, new_performance):
+        self._performance = max(min(new_performance, 100), 0)
+
+    @property
+    def happiness(self):
+        return self._happiness
+    
+    @happiness.setter
+    def happiness(self, new_happiness):
+        self._happiness = max(min(new_happiness, 100), 0)
 
     def work(self):
         change_performance = random.randint(-10, 10)
