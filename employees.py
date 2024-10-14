@@ -83,7 +83,7 @@ class Manager(Employee):
     A subclass of Employee representing a manager.
     """
     def __init__(self, name, manager, salary, savings):
-        super().__init__(self, name, manager, salary, savings)
+        super().__init__(name, manager, salary, savings)
 
     def work(self):
         change_performance = random.randint(-5, 5)
@@ -103,7 +103,7 @@ class TemporaryEmployee(Employee):
     A subclass of Employee representing a temporary employee.
     """
     def __init__(self, name, manager, salary, savings):
-        super().__init__(self, name, manager, salary, savings)
+        super().__init__(name, manager, salary, savings)
 
     def work(self):
         change_performance = random.randint(-15, 15)
@@ -132,7 +132,7 @@ class PermanentEmployee(Employee):
     A subclass of Employee representing a permanent employee.
     """
     def __init__(self, name, manager, salary, savings):
-        super().__init__(self, name, manager, salary, savings)
+        super().__init__(name, manager, salary, savings)
 
     def work(self):
         change_performance = random.randint(-10, 10)
