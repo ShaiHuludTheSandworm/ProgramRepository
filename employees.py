@@ -84,6 +84,7 @@ class Manager(Employee):
     """
     def __init__(self, name, manager, salary, savings):
         super().__init__(name, manager, salary, savings)
+        self.name = name
 
     def work(self):
         change_performance = random.randint(-5, 5)
@@ -104,6 +105,7 @@ class TemporaryEmployee(Employee):
     """
     def __init__(self, name, manager, salary, savings):
         super().__init__(name, manager, salary, savings)
+        self.name = name
 
     def work(self):
         change_performance = random.randint(-15, 15)
@@ -133,6 +135,7 @@ class PermanentEmployee(Employee):
     """
     def __init__(self, name, manager, salary, savings):
         super().__init__(name, manager, salary, savings)
+        self.name = name
 
     def work(self):
         change_performance = random.randint(-10, 10)
