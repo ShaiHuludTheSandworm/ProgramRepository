@@ -228,42 +228,42 @@ class PermanentEmployee(Employee):
     """
     @property
     def name(self):
-        # allows for the employees name to be accessed in a subclass
+        # name: allows for the employees name to be accessed in a subclass
         return self._Employee__name
 
     @property
     def manager(self):
-        # allows for the employees' manager to be accessed in a subclass
+        # manager: allows for the employees' manager to be accessed in a subclass
         return self._Employee__manager
 
     @property
     def performance(self):
-        # sets up performance veriable to be accessed with the setter method
+        # performance: sets up performance veriable to be accessed with the setter method
         return self._performance
 
     @performance.setter
     def performance(self, new_performance):
-        # allows for changes to the performance variable to be corrected if outside parameters
+        # performance: allows for changes to the performance variable to be corrected if outside parameters
         self._performance = max(min(new_performance, 100), 0)
 
     @property
     def happiness(self):
-        # sets up happiness veriable to be accessed with the setter method
+        # happiness: sets up happiness veriable to be accessed with the setter method
         return self._happiness
 
     @happiness.setter
     def happiness(self, new_happiness):
-        # allows for changes to the happiness variable to be corrected if outside parameters
+        # happiness: allows for changes to the happiness variable to be corrected if outside parameters
         self._happiness = max(min(new_happiness, 100), 0)
 
     @property
     def salary(self):
-        # sets up salary veriable to be accessed with the setter method
+        # salary: sets up salary veriable to be accessed with the setter method
         return self._salary
 
     @salary.setter
     def salary(self, new_salary):
-        # allows for changes to the salary variable to raise an ValueError if outside parameters
+        # salary: allows for changes to the salary variable to raise an ValueError if outside parameters
         if new_salary >= 0:
             self._salary = new_salary
         elif new_salary < 0:
@@ -290,5 +290,7 @@ class PermanentEmployee(Employee):
 
 
 def adjust_employee_values(value):
-    # adjust_employee_values: puts happiness and performance back into established parameters
+    """
+    adjust_employee_values: puts happiness and performance back into established parameters
+    """
     return max(min(value, 100), 0)
