@@ -109,7 +109,7 @@ class TemporaryEmployee(Employee):
         self.happiness = adjust_employee_values(self.happiness)
     
     def interact(self, other):
-        super().interact()
+        super().interact(other)
         if other.__name == self.__manager:
             if other.happiness > HAPPINESS_THRESHOLD and self.performance >= TEMP_EMPLOYEE_PERFORMANCE_THRESHOLD:
                 self.savings += MANAGER_BONUS
@@ -133,7 +133,7 @@ class PermanentEmployee(Employee):
         self.happiness = adjust_employee_values(self.happiness)
     
     def interact(self, other):
-        super().interact()
+        super().interact(other)
         if other.__name == self.__manager:
             if other.happiness > HAPPINESS_THRESHOLD and self.performance > PERM_EMPLOYEE_PERFORMANCE_THRESHOLD:
                 self.savings += MANAGER_BONUS
