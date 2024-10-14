@@ -136,14 +136,14 @@ class Manager(Employee):
     # work: the specialized work method for the manager class
     def work(self):
         change_performance = random.randint(-5, 5)
-        self.performance += change_performance
+        self._performance += change_performance
         if change_performance <= 0:
             self._happiness -= 1
             for key in self.relationships:
                 self.relationships[key] -= 1
         else:
             self.happiness += 1
-        self.performance = adjust_employee_values(self.performance)
+        self._performance = adjust_employee_values(self.perf_performanceormance)
         self._happiness = adjust_employee_values(self._happiness)
 
 
@@ -198,7 +198,7 @@ class TemporaryEmployee(Employee):
             self._happiness -= 2
         else:
             self._happiness += 1
-        self.performance = adjust_employee_values(self.performance)
+        self._performance = adjust_employee_values(self._performance)
         self._happiness = adjust_employee_values(self._happiness)
     
     # interact: the interact method for temp employees, which allows for pay drops or termination
@@ -206,7 +206,7 @@ class TemporaryEmployee(Employee):
         super().interact(other)
         if other.name == self.manager:
             if other.happiness > HAPPINESS_THRESHOLD and \
-            self.performance >= TEMP_EMPLOYEE_PERFORMANCE_THRESHOLD:
+            self._performance >= TEMP_EMPLOYEE_PERFORMANCE_THRESHOLD:
                 self.savings += MANAGER_BONUS
             elif other.happiness <= HAPPINESS_THRESHOLD:
                 self.salary = self.salary // 2
@@ -273,7 +273,7 @@ class PermanentEmployee(Employee):
         super().interact(other)
         if other.name == self.manager:
             if other.happiness > HAPPINESS_THRESHOLD and \
-            self.performance > PERM_EMPLOYEE_PERFORMANCE_THRESHOLD:
+            self._performance > PERM_EMPLOYEE_PERFORMANCE_THRESHOLD:
                 self.savings += MANAGER_BONUS
             elif other.happiness <= HAPPINESS_THRESHOLD:
                 self._happiness -= 1
