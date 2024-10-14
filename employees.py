@@ -49,7 +49,6 @@ class Employee(ABC):
     # get_name: this method adds a getter for name so it can be accessed by subclasses
     def get_name(self):
         return self.__name
-    
     # get_manager: this method adds a getter for manager so it can be accessed by subclasses
     def get_manager(self):
         return self.__manager
@@ -108,7 +107,6 @@ class Manager(Employee):
     @property
     def performance(self):
         return self._performance
-    
     # performance: allows for changes to performance to be corrected if outside parameters
     @performance.setter
     def performance(self, new_performance):
@@ -118,7 +116,6 @@ class Manager(Employee):
     @property
     def happiness(self):
         return self._happiness
-    
     # happiness: allows for changes to happiness to be corrected if outside parameters
     @happiness.setter
     def happiness(self, new_happiness):
@@ -128,7 +125,6 @@ class Manager(Employee):
     @property
     def salary(self):
         return self._salary
-    
     # salary: allows for changes to salary to raise an ValueError if outside parameters
     @salary.setter
     def salary(self, new_salary):
@@ -169,7 +165,6 @@ class TemporaryEmployee(Employee):
     @property
     def performance(self):
         return self._performance
-    
     # performance: allows for changes to performance to be corrected if outside parameters
     @performance.setter
     def performance(self, new_performance):
@@ -179,7 +174,6 @@ class TemporaryEmployee(Employee):
     @property
     def happiness(self):
         return self._happiness
-    
     # happiness: allows for changes to happiness to be corrected if outside parameters
     @happiness.setter
     def happiness(self, new_happiness):
@@ -188,8 +182,7 @@ class TemporaryEmployee(Employee):
     # salary: sets up salary veriable to be accessed with the setter method
     @property
     def salary(self):
-        return self._salary
-
+        return self._salar
     # salary: allows for changes to salary to raise an ValueError if outside parameters
     @salary.setter
     def salary(self, new_salary):
@@ -241,7 +234,6 @@ class PermanentEmployee(Employee):
     @property
     def performance(self):
         return self._performance
-    
     # allows for changes to the performance variable to be corrected if outside parameters
     @performance.setter
     def performance(self, new_performance):
@@ -251,7 +243,6 @@ class PermanentEmployee(Employee):
     @property
     def happiness(self):
         return self._happiness
-    
     # allows for changes to the happiness variable to be corrected if outside parameters
     @happiness.setter
     def happiness(self, new_happiness):
@@ -261,7 +252,6 @@ class PermanentEmployee(Employee):
     @property
     def salary(self):
         return self._salary
-
     # allows for changes to the salary variable to raise an ValueError if outside parameters
     @salary.setter
     def salary(self, new_salary):
