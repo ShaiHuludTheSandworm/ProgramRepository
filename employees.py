@@ -46,6 +46,12 @@ class Employee(ABC):
             raise ValueError(SALARY_ERROR_MESSAGE)
         self.salary = salary
 
+    def get_name(self):
+        return self.__name
+    
+    def get_manager(self):
+        return self.__manager
+
     @abstractmethod
     def work(self):
         pass
@@ -132,7 +138,7 @@ class TemporaryEmployee(Employee):
     """
     @property
     def name(self):
-        return self._Employee__name
+        return self.get_name
 
     @property
     def performance(self):
@@ -189,7 +195,7 @@ class PermanentEmployee(Employee):
     """
     @property
     def name(self):
-        return self._Employee__name
+        return self.get_name
 
     @property
     def performance(self):
