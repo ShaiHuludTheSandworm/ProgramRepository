@@ -92,7 +92,7 @@ class Manager(Employee):
     """
     @property
     def name(self):
-        return self._Employee__name
+        return get_name()
 
     @property
     def performance(self):
