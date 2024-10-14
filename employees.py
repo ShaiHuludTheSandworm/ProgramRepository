@@ -142,11 +142,13 @@ class TemporaryEmployee(Employee):
     """
     A subclass of Employee representing a temporary employee.
     """
+    @property
     def name(self):
-        return self.get_name
+        return self._Employee__name
 
+    @property
     def manager(self):
-        return self.get_manager
+        return self._Employee__manager
 
     @property
     def performance(self):
@@ -202,11 +204,13 @@ class PermanentEmployee(Employee):
     """
     A subclass of Employee representing a permanent employee.
     """
+    @property
     def name(self):
-        return self.get_name
+        return self._Employee__name
 
+    @property
     def manager(self):
-        return self.get_manager
+        return self._Employee__manager
 
     @property
     def performance(self):
