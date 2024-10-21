@@ -30,6 +30,7 @@ def group_sum(start, nums, target):
     i = 0 # for iterating through the list
     init_list_item = 0 # outer "for loop" iterable
     current_sum = 0
+    nums = nums[start:]
     return solve_group_sum(nums, i, init_list_item, target, current_sum)
 
 
