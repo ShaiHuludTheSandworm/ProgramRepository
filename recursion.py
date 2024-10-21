@@ -63,7 +63,42 @@ def group_sum_6(start, nums, target):
     pre: start >= 0, len(nums) >= 0, target >= 0, nums will only contain ints
     post: return True if nums has a group of ints that sum to target, False otherwise
     """
-    return True
+    # solution: get out notebook and draw out how the sum would work, should be simple
+    if (len(nums) == 0 and target == 0) or (len(nums) == 1 and nums[0] == target) or start > len(nums)-1 or nums[len(nums)-1] == target:
+        return True
+    elif len(nums) == 0 or len(nums) == 1:
+        return False
+    nums = nums[start:]
+    six_sum = 0
+    for i in range(nums):
+        if i == 6:
+            six_sum += 6
+        nums.pop(i)
+    i = 0 # for iterating through the list
+    init_list_item = 0 # outer "for loop" iterable
+    current_sum = six_sum
+    
+    
+    return solve_group_sum_6(nums, i, init_list_item, target, current_sum, six_sum)
+
+
+def solve_group_sum_6(nums, i, init_list_item, target, current_sum, six_sum):
+    if i == init_list_item:
+        if i == len(nums) - 1:
+            return False
+        elif init_list_item == 0:
+            if nums[0] == target:
+                return True
+            else:
+                return solve_group_sum(nums, i + 1, init_list_item, target, nums[0] + six_sum, six_sum) or solve_group_sum(nums, i + 1, init_list_item, target, six_sum, six_sum)
+        elif i < len(nums) - 1:
+            return solve_group_sum(nums, i + 1, init_list_item, target, current_sum, six_sum) or solve_group_sum(nums, i + 1, init_list_item, target, current_sum - nums[i-1], six_sum)
+    elif i == len(nums) - 1:
+        return solve_group_sum(nums, 0, init_list_item + 1, target, nums[init_list_item + 1] + six_sum, six_sum) or solve_group_sum(nums, 0, init_list_item + 1, target, six_sum, six_sum)
+    elif current_sum + nums[i] == target:
+        return True
+    else:
+        return solve_group_sum(nums, i + 1, init_list_item, target, current_sum + nums[i], six_sum) or solve_group_sum(nums, i + 1, init_list_item, target, current_sum, six_sum) or solve_group_sum(nums, i + 1, init_list_item, target, current_sum - nums[i-1], six_sum)
 
 
 # TODO: Modify this function. You may delete this comment when you are done.
