@@ -53,7 +53,6 @@ def solve_group_sum(nums, i, init_list_item, target, current_sum):
         return solve_group_sum(nums, i + 1, init_list_item, target, current_sum + nums[i]) or solve_group_sum(nums, i + 1, init_list_item, target, current_sum) or solve_group_sum(nums, i + 1, init_list_item, target, current_sum - nums[i-1])
 
 
-# TODO: Modify this function. You may delete this comment when you are done.
 def group_sum_6(start, nums, target):
     """
     Given a list of ints, determine if there exists a group of some ints that sum to the
@@ -129,7 +128,6 @@ def group_sum_5(start, nums, target):
     return True
 
 
-# TODO: Modify this function. You may delete this comment when you are done.
 def group_sum_clump(start, nums, target):
     """
     Given a list of ints, determine if there exists a group of some ints that sum to
@@ -141,7 +139,30 @@ def group_sum_clump(start, nums, target):
     pre: start >= 0, len(nums) >= 0, target >= 0, nums will only contain ints
     post: return True if nums has a group of ints that sum to target, False otherwise
     """
-    return True
+    ident_nums = []
+    for i in range(nums):
+        if i == 0:
+            ident_nums.append(False)
+        elif nums[i] == nums[i-1]:
+            ident_nums.append(True)
+        else:
+            ident_nums.append(False)
+    new_nums = []
+    for i in range(ident_nums):
+        if ident_nums[i] == True:
+            new_nums[len(new_nums)-1] = new_nums[len(new_nums)-1] + nums[i]
+        else:
+            new_nums.append(nums[i])
+    nums = new_nums
+    if (len(nums) == 0 and target == 0) or (len(nums) == 1 and nums[0] == target) or start > len(nums)-1 or nums[len(nums)-1] == target:
+        return True
+    elif len(nums) == 0 or len(nums) == 1:
+        return False
+    i = 0 # for iterating through the list
+    init_list_item = 0 # outer "for loop" iterable
+    current_sum = 0
+    nums = nums[start:]
+    return solve_group_sum(nums, i, init_list_item, target, current_sum)
 
 
 # TODO: Modify this function
