@@ -38,12 +38,12 @@ def solve_group_sum(nums, i, init_list_item, target, current_sum):
         if i == len(nums) - 1:
             return False
         elif init_list_item == 0:
-            if current_sum + nums[0] == target:
+            if nums[0] == target:
                 return True
             else:
                 return solve_group_sum(nums, i + 1, init_list_item, target, nums[0]) or solve_group_sum(nums, i + 1, init_list_item, target, 0)
         elif i < len(nums) - 1:
-            return solve_group_sum(nums, i + 1, init_list_item, target, current_sum)
+            return solve_group_sum(nums, i + 1, init_list_item, target, current_sum) or solve_group_sum(nums, i + 1, init_list_item, target, current_sum - nums[i-1])
     elif i == len(nums) - 1:
         return solve_group_sum(nums, 0, init_list_item + 1, target, nums[init_list_item + 1]) or solve_group_sum(nums, 0, init_list_item + 1, target, 0)
     elif current_sum + nums[i] == target:
