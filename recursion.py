@@ -23,7 +23,7 @@ def group_sum(start, nums, target):
     post: return True if nums has a group of ints that sum to target, False otherwise
     """
     # solution: get out notebook and draw out how the sum would work, should be simple
-    if (len(nums) == 0 and target == 0) or (len(nums) == 1 and nums[0] == target) or start > len(nums)-1:
+    if (len(nums) == 0 and target == 0) or (len(nums) == 1 and nums[0] == target) or start > len(nums)-1 or nums(len(nums)-1) == target:
         return True
     elif len(nums) == 0 or len(nums) == 1:
         return False
