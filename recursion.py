@@ -13,7 +13,7 @@ UT EID 1: SLK2633
 """
 
 
-# TODO: Modify this function. You may delete this comment when you are done.
+
 def group_sum(start, nums, target):
     """
     Given a list of ints, determine if there exists a group of some ints that sum to the
@@ -23,6 +23,33 @@ def group_sum(start, nums, target):
     post: return True if nums has a group of ints that sum to target, False otherwise
     """
     # solution: get out notebook and draw out how the sum would work, should be simple
+    if (len(nums) == 0 and target == 0) or (len(nums) == 1 and nums[0] == target):
+        return True
+    elif len(nums) == 0 or len(nums) == 1:
+        return False
+    i = 0 # for iterating through the list
+    init_list_item = 0 # outer "for loop" iterable
+    current_sum = 0
+    return solve_group_sum(nums, i, init_list_item, target, current_sum)
+
+
+def solve_group_sum(nums, i, init_list_item, target, current_sum):
+    if i == init_list_item:
+        if i == len(nums) - 1:
+            return False
+        elif init_list_item == 0:
+            if current_sum + nums[0] == target:
+                return True
+            else:
+                return solve_group_sum(nums, i + 1, init_list_item, target, nums[0])
+        elif i < len(nums) - 1:
+            return solve_group_sum(nums, i + 1, init_list_item, target, current_sum)
+    elif i == len(nums) - 1:
+        return solve_group_sum(nums, 0, init_list_item + 1, target, nums[init_list_item + 1])
+    elif current_sum + nums[i] == target:
+        return True
+    else:
+        return solve_group_sum(nums, i + 1, init_list_item, target, current_sum + nums[i])
 
 
 # TODO: Modify this function. You may delete this comment when you are done.
@@ -35,6 +62,7 @@ def group_sum_6(start, nums, target):
     pre: start >= 0, len(nums) >= 0, target >= 0, nums will only contain ints
     post: return True if nums has a group of ints that sum to target, False otherwise
     """
+    return True
 
 
 # TODO: Modify this function. You may delete this comment when you are done.
@@ -47,6 +75,9 @@ def group_no_adj(start, nums, target):
     pre: start >= 0, len(nums) >= 0, target >= 0, nums will only contain ints
     post: return True if nums has a group of ints that sum to target, False otherwise
     """
+    # solution: when iterating, iterable increases by 2 whenever a value is selected to be included
+    # otherwise if the value was not selected iterable increases by 1, otherwise identical to original sum
+    return True
 
 
 # TODO: Modify this function. You may delete this comment when you are done.
@@ -59,6 +90,7 @@ def group_sum_5(start, nums, target):
     pre: start >= 0, len(nums) >= 0, target >= 0, nums will only contain ints
     post: return True if nums has a group of ints that sum to target, False otherwise
     """
+    return True
 
 
 # TODO: Modify this function. You may delete this comment when you are done.
@@ -73,6 +105,7 @@ def group_sum_clump(start, nums, target):
     pre: start >= 0, len(nums) >= 0, target >= 0, nums will only contain ints
     post: return True if nums has a group of ints that sum to target, False otherwise
     """
+    return True
 
 
 # TODO: Modify this function
@@ -85,6 +118,7 @@ def split_array(nums):
     pre: len(nums) >= 0, nums will only contain ints
     post: return True if nums can be split, False otherwise
     """
+    return True
 
 
 # TODO: Modify this function. You may delete this comment when you are done.
@@ -97,6 +131,8 @@ def split_odd_10(nums):
     pre: len(nums) >= 0, nums will only contain ints
     post: return True if nums can be split, False otherwise
     """
+    return True
+
 
 
 # TODO: Modify this function. You may delete this comment when you are done.
@@ -111,3 +147,4 @@ def split_53(nums):
     pre: len(nums) >= 0, nums will only contain ints
     post: return True if nums can be split, False otherwise
     """
+    return True
