@@ -49,7 +49,8 @@ def solve_group_sum(nums, i, init_list_item, target, current_sum):
     elif current_sum + nums[i] == target:
         return True
     else:
-        return solve_group_sum(nums, i + 1, init_list_item, target, current_sum + nums[i])
+
+        return solve_group_sum(nums, i + 1, init_list_item, target, current_sum + nums[i]) or solve_group_sum(nums, i + 1, init_list_item, target, current_sum) or solve_group_sum(nums, i + 1, init_list_item, target, current_sum - nums[i-1])
 
 
 # TODO: Modify this function. You may delete this comment when you are done.
