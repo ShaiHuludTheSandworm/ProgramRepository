@@ -113,11 +113,18 @@ class LinkedList:
 
     # Add a polynomial p to the polynomial and return the resulting polynomial as a new linked list.
     def add(self, p):
-        pass
+        
 
     # Multiply a polynomial p with the polynomial and return the product as a new linked list.
     def mult(self, p):
-        pass
+        # have two for loops, an inner and out loop, inner loop is the length of the first polynomials singly linked list
+        # outer loop is the length of the second polynomials singly linked list
+        # first number, the coefficient is multiplied, the second number the exponent is added
+        # the resulting term is inserted into the new linked list
+        # finally a third and fourth loop (probably best to have them be while loops,
+        # since we will delete elements of the linked lists) go through the new linked list
+        # and check for terms with the same exponent, the coefficients will be added together and replace the initial term
+        
 
     # Return a string representation of the polynomial.
     def __str__(self):
@@ -132,7 +139,7 @@ def main():
     # get sum of p and q as a new linked list and print sum
 
     # get product of p and q as a new linked list and print product
-    pass
+    
 
 
 if __name__ == "__main__":
