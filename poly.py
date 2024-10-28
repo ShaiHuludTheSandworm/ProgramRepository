@@ -117,6 +117,7 @@ class LinkedList:
         # Empty List
         if self.head is None:
             self.head = term
+            return
 
         # List w one term
         if self.head.next == None:
@@ -133,6 +134,7 @@ class LinkedList:
                 self.head.coeff = totalVal
                 if totalVal == 0:
                     self.head = None
+            return
 
         # List w > 2 nodes
         itr = self.head
