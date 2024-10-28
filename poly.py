@@ -109,54 +109,32 @@ class LinkedList:
     # If a term with that exponent already exists, add the coefficients together.
     # You must keep the terms in descending order by exponent.
     def insert_term(self, coeff, exp):
+        if coeff == 0:
+            return
+        
         term = Node(coeff, exp, None)
 
-        if term.coeff == 0:
-            return
-
         # Empty List
-        if self.head is None:
+        if self.head is None or exp > self.head.exp:
+            term.next = self.head
             self.head = term
             return
 
-        # List w one term
-        if self.head.next == None:
-            if term.exp < self.head.exp:
-                #TODO order of exponents 
-                self.head.next = term
-
-            if term.exp > self.head.exp:
-                term.next = self.head
-                self.head = term
-
-            if term.exp == self.head.exp:
-                totalVal = term.coeff + self.head.coeff
-                self.head.coeff = totalVal
-                if totalVal == 0:
-                    self.head = None
-            return
-
-        # List w > 2 nodes
         itr = self.head
-        while itr and itr.next:
-
-            if term.exp == itr.next.exp:
-                totalVal = term.coeff + itr.next.coeff
-                if totalVal == 0:
-                    itr.next = itr.next.next
-                itr.coeff = totalVal
-                break
-
-            if term.exp > itr.next.exp:
-                # TODO make it stay front :)
-                term.next = itr.next
-                itr.next = term
-                break
-
+        while itr.next is not None and itr.next.exp > exp:
             itr = itr.next
 
-        term.next = itr.next
-        itr.next = term
+        if itr.exp == exp:
+            itr.coeff += coeff
+            if itr.coeff == 0:
+                self.head = itr.next
+        elif itr.next is not None and itr.next.exp == exp:
+            itr.next.coeff += coeff
+            if itr.next.coeff == 0:
+                itr.next = itr.next.next
+        else:
+            term.next = itr.next
+            itr.next = term
 
 
     def largest_exponent(self, poly_list):
