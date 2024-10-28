@@ -175,10 +175,13 @@ class LinkedList:
             while first_polynomial is not None:
                 if first_polynomial.exp == counter:
                     combined_term += first_polynomial.coeff
+                first_polynomial = first_polynomial.next
             while second_polynomial is not None:
                 if second_polynomial.exp == counter:
                     combined_term += second_polynomial.coeff
+                second_polynomial = second_polynomial.next
             self.insert_term(combined_term, counter)
+            counter += 1
 
 
     # Multiply a polynomial p with the polynomial and return the product as a new linked list.
