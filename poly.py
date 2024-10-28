@@ -211,7 +211,7 @@ def main():
     print(added_polynomial)
 
     multiplied_polynomial = LinkedList()
-    multiplied_polynomial.mult(polynomial1, polynomial2)
+    multiplied_polynomial.mult(polynomial1.head, polynomial2.head)
     print(multiplied_polynomial)
 
 
