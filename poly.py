@@ -158,7 +158,8 @@ class LinkedList:
 
     # Add a polynomial p to the polynomial and return the resulting polynomial as a new linked list.
     def add(self, p, q):
-        # same thing as 3rd and 4th loops in mult
+        
+
 
     # Multiply a polynomial p with the polynomial and return the product as a new linked list.
     def mult(self, p, q):
