@@ -173,16 +173,16 @@ class LinkedList:
 
     # Return a string representation of the polynomial.
     def __str__(self):
-        polynomial_str = []
+        polynomial_str = ""
         inbetween = " + "
         current = self.head
         while current is not None:
             if len(polynomial_str) == 0:
-                polynomial_str.append(str(current))
+                polynomial_str = polynomial_str + str(current)
             else:
-                polynomial_str.append(str(current))
+                polynomial_str = polynomial_str + inbetween
+                polynomial_str = polynomial_str + str(current)
             current = current.next
-        polynomial_str.pop()
         return polynomial_str
 
 
