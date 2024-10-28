@@ -181,9 +181,6 @@ class LinkedList:
             self.insert_term(combined_term, counter)
 
 
-            
-
-
     # Multiply a polynomial p with the polynomial and return the product as a new linked list.
     def mult(self, p, q):
         # have two for loops, an inner and out loop, inner loop is the length of the first polynomials singly linked list
@@ -193,7 +190,20 @@ class LinkedList:
         # finally a third and fourth loop (probably best to have them be while loops,
         # since we will delete elements of the linked lists) go through the new linked list
         # and check for terms with the same exponent, the coefficients will be added together and replace the initial term
-
+        exponent = 0
+        coefficient = 0
+        first_polynomial = p.head
+        while first_polynomial is not None:
+            second_polynomial = q.head
+            while second_polynomial is not None:
+                exponent = first_polynomial.exp
+                coefficient = first_polynomial.coeff
+                exponent += second_polynomial.exp
+                coefficient *= second_polynomial.coeff
+                self.insert_term(coefficient, exponent)
+                second_polynomial = second_polynomial.next
+            first_polynomial = first_polynomial.next
+        
 
     # Return a string representation of the polynomial.
     def __str__(self):
