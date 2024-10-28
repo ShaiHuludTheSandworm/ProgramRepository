@@ -156,9 +156,20 @@ class LinkedList:
         term.next = itr.next
         itr.next = term
 
+
+    def largest_exponent(self, poly_list):
+        exponent = 0
+        while poly_list is not None:
+            exponent = max(poly_list.exp, exponent)
+        return exponent
+
+
     # Add a polynomial p to the polynomial and return the resulting polynomial as a new linked list.
     def add(self, p, q):
-        
+        highest_exponent = max(largest_exponent(p), largest_exponent(q))
+
+
+        while 
 
 
     # Multiply a polynomial p with the polynomial and return the product as a new linked list.
