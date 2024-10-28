@@ -166,7 +166,7 @@ class LinkedList:
 
     # Add a polynomial p to the polynomial and return the resulting polynomial as a new linked list.
     def add(self, p, q):
-        highest_exponent = max(largest_exponent(p), largest_exponent(q))
+        highest_exponent = max(self.largest_exponent(p), self.largest_exponent(q))
         counter = 0
         combined_term = 0
         while counter <= highest_exponent:
@@ -178,8 +178,8 @@ class LinkedList:
             while second_polynomial is not None:
                 if second_polynomial.exp == counter:
                     combined_term += second_polynomial.coeff
-            insert_term(combined_term, counter)
-            
+            self.insert_term(combined_term, counter)
+
 
             
 
