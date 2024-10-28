@@ -157,11 +157,11 @@ class LinkedList:
         itr.next = term
 
     # Add a polynomial p to the polynomial and return the resulting polynomial as a new linked list.
-    def add(self, p):
+    def add(self, p, q):
         # same thing as 3rd and 4th loops in mult
 
     # Multiply a polynomial p with the polynomial and return the product as a new linked list.
-    def mult(self, p):
+    def mult(self, p, q):
         # have two for loops, an inner and out loop, inner loop is the length of the first polynomials singly linked list
         # outer loop is the length of the second polynomials singly linked list
         # first number, the coefficient is multiplied, the second number the exponent is added
@@ -194,7 +194,26 @@ def main():
     # get sum of p and q as a new linked list and print sum
 
     # get product of p and q as a new linked list and print product
+    polynomial1 = LinkedList()
+    polynomial_term_length = input()
+    for i in range(polynomial_term_length):
+        polynomial1.insert_term(input())
+
+    input()
+
+    polynomial2 = LinkedList()
+    polynomial_term_length = input()
+    for i in range(polynomial_term_length):
+        polynomial2.insert_term(input())
     
+    added_polynomial = LinkedList()
+    added_polynomial.add(polynomial1, polynomial2)
+    print(added_polynomial)
+
+    multiplied_polynomial = LinkedList()
+    multiplied_polynomial.mult(polynomial1, polynomial2)
+    print(multiplied_polynomial)
+
 
 
 if __name__ == "__main__":
