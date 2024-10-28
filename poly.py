@@ -161,6 +161,7 @@ class LinkedList:
         exponent = 0
         while poly_list is not None:
             exponent = max(poly_list.exp, exponent)
+            poly_list = poly_list.next
         return exponent
 
 
