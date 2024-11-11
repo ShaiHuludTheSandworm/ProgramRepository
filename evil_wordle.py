@@ -496,7 +496,6 @@ def get_feedback_colors(secret_word, guessed_word):
     return feedback
 
 
-# TODO: Modify this function. You may delete this comment when you are done.
 def get_feedback(remaining_secret_words, guessed_word):
     """
     Processes the guess and generates the colored feedback based on the hardest word family. Use
@@ -515,10 +514,30 @@ def get_feedback(remaining_secret_words, guessed_word):
             2. Difficulty of the feedback
             3. Lexicographical ordering of the feedback (ASCII value comparisons)
     """
-    # Modify this! This is just starter code.
-    feedback_colors = get_feedback_colors(remaining_secret_words[0], guessed_word)
+    words = remaining_secret_words
+    guesses = []
+    patterns_of_guesses = dict()
+    families = []
+    correct_word = [CORRECT_COLOR, CORRECT_COLOR, CORRECT_COLOR, CORRECT_COLOR, CORRECT_COLOR]
+    for word in words:
+        guesses.append([word, get_feedback_colors(word, guessed_word)])
+    for guess in guesses:
+        if guess[1] == correct_word:
+            guesses.remove(guess)
+        elif guess[1] in patterns_of_guesses.keys():
+            patterns_of_guesses[guess[1]].append(guess[0])
+        else:
+            patterns_of_guesses[guess[1]] = [guess[0]]
+    for key, value in patterns_of_guesses:
+        families.append(WordFamily(key), value)
+    families = fast_sort(families)
+    # tasks
+    # 1: assign each word its feedback
+    # 2: group words into families based on feedback
+    # 3: use fast_sort() to sort the families
+    # 4: return earliest families words and feedback colors
 
-    return feedback_colors, remaining_secret_words
+    return families[0].feedback_colors, families[0].words
 
 
 # DO NOT modify this function.
