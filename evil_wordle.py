@@ -170,6 +170,7 @@ class WordFamily:
         """
         self.feedback_colors = feedback_colors
         self.words = words
+        self.difficulty = 0
         for color in feedback_colors:
             self.difficulty += COLOR_DIFFICULTY[color]
 
