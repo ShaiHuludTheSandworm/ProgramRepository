@@ -533,7 +533,7 @@ def get_feedback(remaining_secret_words, guessed_word):
         else:
             patterns_of_guesses[str(guess[1])] = [guess[0]]
     if len(patterns_of_guesses) == 0:
-        return None
+        return guesses[0][0], guesses[0][1]
     for value in patterns_of_guesses:
         families.append(WordFamily(get_feedback_colors(value, guessed_word), value))
     families = fast_sort(families)
