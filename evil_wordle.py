@@ -122,7 +122,18 @@ class Keyboard:
         post: Returns a formatted string with each letter colored according to feedback
               and arranged to match a typical keyboard layout.
         """
-        return ""
+        colored_keys = ""
+        counter = 0
+        for letters, colors  in self.colors.items():
+            if counter == 10:
+                colored_keys += "\n "
+            elif counter == 19:
+                colored_keys += "\n   "
+            elif counter != 0 or counter != 25:
+                colored_keys += " "
+            colored_keys += color_word(list(colors), list(letters))
+            counter += 1
+        return colored_keys
 
 
 class WordFamily:
