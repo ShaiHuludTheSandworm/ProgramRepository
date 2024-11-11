@@ -204,6 +204,7 @@ class WordFamily:
                 while counter < len(self.words):
                     if self.words[counter] < other.words[counter]:
                         return True
+                    counter += 1
                 return False
             elif self.difficulty < other.difficulty:
                 return True
