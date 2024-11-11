@@ -153,7 +153,7 @@ class WordFamily:
 
     COLOR_DIFFICULTY = {CORRECT_COLOR: 0, WRONG_SPOT_COLOR: 1, NOT_IN_WORD_COLOR: 2}
 
-    # TODO: Modify this method. You may delete this comment when you are done.
+
     def __init__(self, feedback_colors, words):
         """
         Initializes the WordFamily instance with a feedback color list and a list of corresponding
@@ -170,8 +170,8 @@ class WordFamily:
         """
         self.feedback_colors = feedback_colors
         self.words = words
-        self.difficulty = 0
-        # TODO: implement the difficulty calculation here.
+        for color in feedback_colors:
+            self.difficulty += COLOR_DIFFICULTY[color]
 
     # TODO: Modify this method. You may delete this comment when you are done.
     def __lt__(self, other):
@@ -194,7 +194,7 @@ class WordFamily:
         post: Returns a boolean result of the comparison, raises NotImplementedError
               if `other` is not a WordFamily instance.
         """
-        return False
+        if self.words 
 
     # DO NOT change this method.
     # You should use this for debugging!
@@ -322,7 +322,6 @@ def prepare_game():
     return attempts, valid_words
 
 
-# TODO: Modify this function. You may delete this comment when you are done.
 def fast_sort(lst):
     """
     Returns a new list with the same elements as lst sorted in ascending order. You MUST implement
@@ -335,7 +334,91 @@ def fast_sort(lst):
     post: Returns a new sorted list of the items in lst.
 
     """
-    return lst[:]
+    if len(lst) == 0 or len(lst) == 1:
+        return lst
+    elif str(lst[0]) == "<class 'int'>":
+        return sort_num(lst)
+    elif str(lst[0]) == "<class 'float'>":
+        return sort_num(lst)
+    elif str(lst[0]) == "<class 'str'>":
+        return sort_str(lst)
+    else:
+        return sort_class(lst)
+
+
+
+
+def sort_num(lst):
+    mid = len(lst) // 2
+    left_half = lst[:mid]
+    right_half = lst[mid:]
+
+    sort_num(left_half)
+    sort_num(right_half)
+
+    i, j, k = 0, 0, 0
+    while i < len(left_half) and j < len(right_half):
+        if left_half[i] <= right_half[j]:
+            lst[k] = left_half[i]
+            i = i + 1
+        else:
+            lst[k] = right_half[j]
+            j = j + 1
+        k = k + 1
+
+    while i < len(left_half):
+        lst[k] = left_half[i]
+        i = i + 1
+        k = k + 1
+
+    while j < len(right_half):
+        lst[k] = right_half[j]
+        j = j + 1
+        k = k + 1
+
+
+def sort_str(lst):
+    if len(lst) > 1:
+        mid = len(lst) // 2
+        left_half = lst[:mid]
+        right_half = lst[mid:]
+
+        sort_num(left_half)
+        sort_num(right_half)
+
+        i, j, k = 0, 0, 0
+        while i < len(left_half) and j < len(right_half):
+            if comp_str(left_half[i], right_half[i]):
+                lst[k] = left_half[i]
+                i = i + 1
+            else:
+                lst[k] = right_half[j]
+                j = j + 1
+            k = k + 1
+
+        while i < len(left_half):
+            lst[k] = left_half[i]
+            i = i + 1
+            k = k + 1
+
+        while j < len(right_half):
+            lst[k] = right_half[j]
+            j = j + 1
+            k = k + 1
+
+
+def comp_str(str1, str2):
+    if str1 == str2:
+        return True
+    for a,b in str1, str2:
+        if ord(a) < ord(b):
+            return True
+    return False
+
+
+def sort_class(lst):
+    
+
 
 
 # TODO: Modify this helper function. You may delete this comment when you are done.
