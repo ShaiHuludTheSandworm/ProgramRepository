@@ -195,7 +195,7 @@ class WordFamily:
               if `other` is not a WordFamily instance.
         """
         if not isinstance(other, WordFamily):
-            
+            raise NotImplementedError("< operator only valid for WordFamily comparisons.")
         lst = [self, other]
         if fast_sort(lst)[0] == other:
             return True
