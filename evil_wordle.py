@@ -173,7 +173,7 @@ class WordFamily:
         for color in feedback_colors:
             self.difficulty += COLOR_DIFFICULTY[color]
 
-    # TODO: Modify this method. You may delete this comment when you are done.
+
     def __lt__(self, other):
         """
         Compares this WordFamily object with another by prioritizing a larger
@@ -194,7 +194,10 @@ class WordFamily:
         post: Returns a boolean result of the comparison, raises NotImplementedError
               if `other` is not a WordFamily instance.
         """
-        if self.words 
+        lst = [self, other]
+        if fast_sort(lst)[0] == other:
+            return True
+        return False
 
     # DO NOT change this method.
     # You should use this for debugging!
