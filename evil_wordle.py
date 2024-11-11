@@ -361,8 +361,6 @@ def fast_sort(lst):
         return sort_class(lst)
 
 
-
-
 def sort_num(lst):
     if len(lst) > 1:
         mid = len(lst) // 2
@@ -462,8 +460,6 @@ def sort_class(lst):
             k = k + 1
 
 
-
-# TODO: Modify this helper function. You may delete this comment when you are done.
 def get_feedback_colors(secret_word, guessed_word):
     """
     Processes the guess and generates the colored feedback based on the potential secret word. This
