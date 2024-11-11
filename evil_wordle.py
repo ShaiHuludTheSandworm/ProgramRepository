@@ -477,10 +477,20 @@ def get_feedback_colors(secret_word, guessed_word):
             length 5 with the ANSI coloring in each index as the returned value.
     """
     feedback = [None] * NUM_LETTERS
-
-    # Modify this! This is just starter code.
+    secret_letters = list(secret_word)
+    guessed_letters = list(guessed_word)
+    incorrect_letters = []
+    # First pass of for loop for correct and not in word letters, second does wrong spot
     for i in range(NUM_LETTERS):
-        feedback[i] = WRONG_SPOT_COLOR
+        if secret_letters[i] == guessed_letters[i]:
+            feedback[i] = CORRECT_COLOR
+        else:
+            incorrect_letters.append(secret_letters[i])
+            feedback[i] = NOT_IN_WORD_COLOR
+    for i in range(NUM_LETTERS):
+        if guessed_letters[i] in incorrect_letters and feedback[i] is not CORRECT_COLOR:
+            feedback[i] = WRONG_SPOT_COLOR
+            incorrect_letters.remove(guessed_letters[i])
 
     # You do not have to change this return statement
     return feedback
