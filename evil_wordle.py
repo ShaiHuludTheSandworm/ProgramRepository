@@ -526,12 +526,12 @@ def get_feedback(remaining_secret_words, guessed_word):
     for guess in guesses:
         if guess[1] == correct_word:
             guesses.remove(guess)
-        elif guess[1] in patterns_of_guesses.keys():
-            patterns_of_guesses[guess[1]].append(guess[0])
+        elif str(guess[1]) in patterns_of_guesses.keys():
+            patterns_of_guesses[str(guess[1])].append(guess[0])
         else:
-            patterns_of_guesses[guess[1]] = [guess[0]]
-    for key, value in patterns_of_guesses:
-        families.append(WordFamily(key), value)
+            patterns_of_guesses[str(guess[1])] = [guess[0]]
+    for value in patterns_of_guesses:
+        families.append(WordFamily(get_feedback_colors(value, guessed_word)), value)
     families = fast_sort(families)
     # tasks
     # 1: assign each word its feedback
