@@ -540,7 +540,8 @@ def get_feedback(remaining_secret_words, guessed_word):
     # 2: group words into families based on feedback
     # 3: use fast_sort() to sort the families
     # 4: return earliest families words and feedback colors
-
+    if families[0] == None:
+        raise ValueError("What the fuck")
     return families[0].feedback_colors, families[0].words
 
 
