@@ -196,11 +196,20 @@ class WordFamily:
         """
         if not isinstance(other, WordFamily):
             raise NotImplementedError("< operator only valid for WordFamily comparisons.")
-        lst = [self, other]
-        if fast_sort(lst)[0] == other:
+        if len(self.words) == len(other.words):
+            if self.difficulty == other.difficulty:
+                for word1,word2 in self.words, other.words:
+                    if word1 < word2:
+                        return True
+                return False
+            elif self.difficulty < other.difficulty:
+                return True
+            else:
+                return False
+        elif len(self.words) < len(other.words):
             return True
-        return False
-
+        else:
+            return False
 
     # DO NOT change this method.
     # You should use this for debugging!
@@ -340,7 +349,7 @@ def fast_sort(lst):
     post: Returns a new sorted list of the items in lst.
 
     """
-    if len(lst) == 0 or len(lst) == 1:
+    if (len(lst) == 0 or len(lst) == 1) or (len(lst) == 2 and lst[0] == lst[1]):
         return lst
     elif str(lst[0]) == "<class 'int'>":
         return sort_num(lst)
@@ -355,32 +364,33 @@ def fast_sort(lst):
 
 
 def sort_num(lst):
-    mid = len(lst) // 2
-    left_half = lst[:mid]
-    right_half = lst[mid:]
+    if len(lst) > 1:
+        mid = len(lst) // 2
+        left_half = lst[:mid]
+        right_half = lst[mid:]
 
-    sort_num(left_half)
-    sort_num(right_half)
+        sort_num(left_half)
+        sort_num(right_half)
 
-    i, j, k = 0, 0, 0
-    while i < len(left_half) and j < len(right_half):
-        if left_half[i] <= right_half[j]:
+        i, j, k = 0, 0, 0
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] <= right_half[j]:
+                lst[k] = left_half[i]
+                i = i + 1
+            else:
+                lst[k] = right_half[j]
+                j = j + 1
+            k = k + 1
+
+        while i < len(left_half):
             lst[k] = left_half[i]
             i = i + 1
-        else:
+            k = k + 1
+
+        while j < len(right_half):
             lst[k] = right_half[j]
             j = j + 1
-        k = k + 1
-
-    while i < len(left_half):
-        lst[k] = left_half[i]
-        i = i + 1
-        k = k + 1
-
-    while j < len(right_half):
-        lst[k] = right_half[j]
-        j = j + 1
-        k = k + 1
+            k = k + 1
 
 
 def sort_str(lst):
@@ -423,7 +433,33 @@ def comp_str(str1, str2):
 
 
 def sort_class(lst):
-    
+    if len(lst) > 1:
+        mid = len(lst) // 2
+        left_half = lst[:mid]
+        right_half = lst[mid:]
+
+        sort_num(left_half)
+        sort_num(right_half)
+
+        i, j, k = 0, 0, 0
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] <= right_half[j]:
+                lst[k] = left_half[i]
+                i = i + 1
+            else:
+                lst[k] = right_half[j]
+                j = j + 1
+            k = k + 1
+
+        while i < len(left_half):
+            lst[k] = left_half[i]
+            i = i + 1
+            k = k + 1
+
+        while j < len(right_half):
+            lst[k] = right_half[j]
+            j = j + 1
+            k = k + 1
 
 
 
