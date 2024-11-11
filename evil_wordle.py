@@ -200,8 +200,9 @@ class WordFamily:
             raise NotImplementedError("< operator only valid for WordFamily comparisons.")
         if len(self.words) == len(other.words):
             if self.difficulty == other.difficulty:
-                for word1,word2 in self.words, other.words:
-                    if word1 < word2:
+                counter = 0
+                while counter < len(self.words):
+                    if self.words[counter] < other.words[counter]:
                         return True
                 return False
             elif self.difficulty < other.difficulty:
