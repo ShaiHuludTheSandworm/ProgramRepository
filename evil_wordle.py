@@ -399,8 +399,8 @@ def sort_str(lst):
         left_half = lst[:mid]
         right_half = lst[mid:]
 
-        sort_num(left_half)
-        sort_num(right_half)
+        sort_str(left_half)
+        sort_str(right_half)
 
         i, j, k = 0, 0, 0
         while i < len(left_half) and j < len(right_half):
@@ -438,8 +438,8 @@ def sort_class(lst):
         left_half = lst[:mid]
         right_half = lst[mid:]
 
-        sort_num(left_half)
-        sort_num(right_half)
+        sort_class(left_half)
+        sort_class(right_half)
 
         i, j, k = 0, 0, 0
         while i < len(left_half) and j < len(right_half):
