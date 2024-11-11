@@ -194,10 +194,13 @@ class WordFamily:
         post: Returns a boolean result of the comparison, raises NotImplementedError
               if `other` is not a WordFamily instance.
         """
+        if not isinstance(other, WordFamily):
+            
         lst = [self, other]
         if fast_sort(lst)[0] == other:
             return True
         return False
+
 
     # DO NOT change this method.
     # You should use this for debugging!
