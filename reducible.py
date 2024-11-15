@@ -16,7 +16,7 @@ UT EID 1: SLK2633
 
 # the constant used to calculate the step size
 STEP_SIZE_CONSTANT = 3
-
+import sys
 
 # DO NOT modify this function.
 def is_prime(n):
@@ -115,24 +115,31 @@ def get_longest_words(string_list):
 def main():
     """The main function that calculates the longest reducible words"""
     # create an empty word_list
-    word_list = []
+    word_list = sys.argv[1:]
     # read words using input redirection
     # where each line read from input()
     # should be a single word. Append to word_list
     # ensure each word has no trailing white space.
-    file_name = 
+    for i in range(word_list):
+        word_list[i] = word_list[i].strip()
+    prime_number = 2 * len(word_list) + 1
     # find length of word_list
-
+    while not prime_number.is_prime:
+        prime_number += 1
     # determine prime number N that is greater than twice
     # the length of the word_list
-
+    hash_list = [""] * prime_number
     # create an empty hash_list
 
     # populate the hash_list with N blank strings
-
+    for word in word_list:
+        hash_list = insert_word(word, hash_list)
     # hash each word in word_list into hash_list
     # for collisions use double hashing
-
+    prime_number = 0.2 * len(word_list) + 1
+    while not prime_number.is_prime:
+        prime_number += 1
+    hash_memo = [""] * prime_number
     # create an empty hash_memo of size M
     # we do not know a priori how many words will be reducible
     # let us assume it is 10 percent (fairly safe) of the words
@@ -142,7 +149,11 @@ def main():
     # populate the hash_memo with M blank strings
 
     # create an empty list reducible_words
-
+    reducible_words = []
+    for word in word_list:
+        if word != "":
+            if is_reducible(word, hash_list, hash_memo):
+                reducible_words.append(word)
     # for each word in the word_list recursively determine
     # if it is reducible, if it is, add it to reducible_words
     # as you recursively remove one letter at a time check
