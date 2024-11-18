@@ -88,7 +88,8 @@ def find_word(s, hash_table):
     """
 
 
-# TODO: Modify this function. You may delete this comment when you are done.
+
+
 def is_reducible(s, hash_table, hash_memo):
     """
     Determines if a string is reducible using a recursive check.
@@ -99,9 +100,14 @@ def is_reducible(s, hash_table, hash_memo):
     post: Returns True if s is reducible (also updates hash_memo by
           inserting s if reducible), otherwise returns False.
     """
+    if s not in hash_table:
+        return False
+    
+    char_list = list(s)
+    for i in range(len(char_list)):
+        
 
 
-# TODO: Modify this function. You may delete this comment when you are done.
 def get_longest_words(string_list):
     """
     Finds longest words from a list.
@@ -109,6 +115,14 @@ def get_longest_words(string_list):
     pre: string_list is a list of lowercase strings.
     post: Returns a list of words in string_list that have the maximum length.
     """
+    largest_reducible_word = []
+    for word in string_list:
+        if len(list(word)) >= len(list([largest_reducible_word[0]])):
+            if len(list(word)) > len(list([largest_reducible_word[0]])):
+                largest_reducible_word = [word]
+            else:
+                largest_reducible_word.append(word)
+    return largest_reducible_word
 
 
 # TODO: Modify this function. You may delete this comment when you are done.
@@ -154,6 +168,16 @@ def main():
         if word != "":
             if is_reducible(word, hash_list, hash_memo):
                 reducible_words.append(word)
+    reducible_words_alphabetical_order = reducible_words.sort()
+    largest_red_word = []
+    for word in reducible_words_alphabetical_order:
+        if len(list(word)) >= len(list([largest_red_word[0]])):
+            if len(list(word)) > len(list([largest_red_word[0]])):
+                largest_red_word = [word]
+            else:
+                largest_red_word.append(word)
+        print(word)
+    
     # for each word in the word_list recursively determine
     # if it is reducible, if it is, add it to reducible_words
     # as you recursively remove one letter at a time check
