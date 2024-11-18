@@ -105,7 +105,7 @@ def is_reducible(s, hash_table, hash_memo):
     
     char_list = list(s)
     for i in range(len(char_list)):
-        
+        return True
 
 
 def get_longest_words(string_list):
