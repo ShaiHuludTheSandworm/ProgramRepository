@@ -4,7 +4,7 @@
 
 def game_loop():
     #function that runs the game loop, allowing the chess bot to play itself
-
+    print("huge success")
     game_condition = "Game Started"
     game_state = []
     while game_condition != "Game over":
@@ -14,7 +14,8 @@ def game_loop():
 
 def rule_book():
     #function that knows chess rules
-
+    print("making a note here")
+    
 
 def main():
     #functions needed, main game loop here
@@ -48,7 +49,9 @@ def main():
 
 
 
-    print("yes")
+    print("this was a triumph")
+    rule_book()
+    game_loop()
 
 
 
