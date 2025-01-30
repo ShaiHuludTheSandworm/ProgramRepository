@@ -15,7 +15,26 @@ def game_loop():
 def rule_book():
     #function that knows chess rules
     print("making a note here")
-    
+    chess_board = 
+    # K is king, Q is queen, R is rook, B is bishop, N is knight, P is pawn
+    # M is movement pattern, T is take pattern, MT is for when movement and take are identical
+    # L is limitation or special circumstances
+    # F is forward, B is back, L is left, R is right, D is all four diagonals, S is skew or F/B2 + L/R1 | L/R2 + F/B1
+    # 1 is only being able to move a single space in a direction / pattern, U is unlimited movement in a direction / pattern
+    # When two directional / pattern characters are side by side the first is the limitation on the second FD is forward only diagonals
+    # When + is used between two directional / pattern characters they share the final 1/2/U limit on movement or take but are disconnected otherwise
+    # X is exposure, having the X limitation prevents a piece from entering or staying in a space that is threatened by an enemy piece
+    # E is end, having the end limitation means that when a piece reaches the opposite side of the board it can transform into any other piece except the king
+    chess_pieces = {
+        "K": ["MT=F+B+L+R+D1", "L=X + "],
+        "Q": ["MT=F+B+L+R+DU", "", ""],
+        "R": ["MT=F+B+L+RU", "", ""],
+        "B": ["MT=DU", "", "L=C"],
+        "N": ["MT=S1", "", "L=G"],
+        "P": ["M=F1", "T=FD1", "L=E"]
+        "FBRLDS1UMT+="
+    }
+
 
 def main():
     #functions needed, main game loop here
