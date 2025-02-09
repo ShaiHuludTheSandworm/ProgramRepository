@@ -67,7 +67,7 @@ def main():
     #function that determines the relative value of a chess game, with chess games between more competent players being more valuable and chess games between lower elo players being less valuable
     #function that sorts / stores chess game states by how likely a player is to win in that gamestate and then moves both to get to such gamestates and moves to do after that game state
     #function to convert to and from my way of encoding chess games to the industry standard / standards for encoding chess games
-
+    #function that predicts both most likely next move of enemy player and most optimal move of enemy player, and based on previous moves predict which is most likely
 
 
     print("this was a triumph")
